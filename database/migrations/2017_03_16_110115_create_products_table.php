@@ -15,10 +15,10 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('tag_id')->unique();
-            $table->integer('game_id');
-            $table->integer('platform_id');
-            $table->integer('user_id');
+            $table->integer('tag_id')->unique()->index();
+            $table->integer('game_id')->unsigned();
+            $table->integer('platform_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');
