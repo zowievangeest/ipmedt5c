@@ -11,6 +11,12 @@ class PublishersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('publishers')->insert(
+            [
+                [
+                    'publisher' => 'Riot Games'
+                ],
+            ]
+        );
     }
 }

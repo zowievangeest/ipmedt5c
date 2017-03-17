@@ -11,6 +11,13 @@ class Games_genresTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('games_genres')->insert(
+            [
+                [
+                    'game_id' => 1,
+                    'genre_id' => 1
+                ],
+            ]
+        );
     }
 }

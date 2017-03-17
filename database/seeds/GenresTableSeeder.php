@@ -11,6 +11,15 @@ class GenresTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('genres')->insert(
+            [
+                [
+                    'name' => 'MOBA',
+                ],
+                [
+                    'name' => 'FPS',
+                ]
+            ]
+        );
     }
 }

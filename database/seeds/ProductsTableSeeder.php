@@ -11,6 +11,15 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('products')->insert(
+            [
+                [
+                    'tag_id' => 123,
+                    'game_id' => 1,
+                    'platform_id' => 4,
+                    'user_id' => 1
+                ]
+            ]
+        );
     }
 }

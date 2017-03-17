@@ -11,6 +11,13 @@ class VideosTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('videos')->insert(
+            [
+                [
+                    'title' => 'Welcome to League of Legends',
+                    'url' => 'https://www.youtube.com/watch?v=IzMnCv_lPxI'
+                ],
+            ]
+        );
     }
 }
