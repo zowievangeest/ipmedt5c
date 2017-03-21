@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
 {
-    //
 
+    protected $with = ['publisher', 'video', 'age_range'];
 
     public function publisher()
     {
@@ -23,4 +23,5 @@ class Game extends Model
     {
         return $this->hasOne('ipmedt5c\Age_range', 'id', 'age_range_id');
     }
+
 }

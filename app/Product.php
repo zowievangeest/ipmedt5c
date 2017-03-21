@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    //
 
+    protected $with = ['game', 'platform', 'user'];
 
     public function game()
     {

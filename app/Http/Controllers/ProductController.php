@@ -82,4 +82,9 @@ class ProductController extends Controller
     {
         //
     }
+
+    public function tagId($tag_id)
+    {
+        return Product::where('tag_id', $tag_id)->first();
+    }
 }
