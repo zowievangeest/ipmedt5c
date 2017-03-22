@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/product/{tag_id}', 'ProductController@tagId');
+Route::get('{any}', function () {
+    return File::get(public_path('index.html'));
+})->where('any', '.*');
