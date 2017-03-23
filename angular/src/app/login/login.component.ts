@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {LoginService} from "../services/login/login.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -9,11 +10,14 @@ import {LoginService} from "../services/login/login.service";
 })
 export class LoginComponent implements OnInit {
 
- public loginForm: FormGroup;
+  public loginForm: FormGroup;
+
+  public msg: string;
 
 
   constructor(private  formBuilder: FormBuilder,
-              private loginService: LoginService) { }
+              private loginService: LoginService,
+              private router:Router) { }
 
   ngOnInit() {
       this.loginForm = this.formBuilder.group({
@@ -27,10 +31,14 @@ export class LoginComponent implements OnInit {
 
       this.loginService.login(value).subscribe(
           (res: any) => {
-              console.log(res);
+              this.router.navigateByUrl('/');
           },
-          (err: any) => {
-              console.error(err);
+          (err: number) => {
+              if (err === 401){
+                this.msg = 'Login is niet correct';
+              } else if (err === 500) {
+                this.msg = 'Probeer het op een ander moment nog eens';
+              }
           }
       )
   }
