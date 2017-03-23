@@ -8,6 +8,7 @@ import {RoutingModule} from "./modules/routing.module";
 import { AppComponent } from './app/app.component';
 import { LoginComponent } from './login/login.component';
 import {RouterModule} from "@angular/router";
+import {LoginService} from "./services/login/login.service";
 
 
 @NgModule({
@@ -24,7 +25,9 @@ import {RouterModule} from "@angular/router";
     ReactiveFormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    LoginService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
