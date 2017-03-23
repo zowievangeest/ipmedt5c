@@ -182,6 +182,12 @@ return [
          */
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
 
+        /*
+         *  Dingo service provider
+         */
+
+        Dingo\Api\Provider\LaravelServiceProvider::class,
+
     ],
 
     /*

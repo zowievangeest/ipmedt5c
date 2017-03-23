@@ -13,8 +13,31 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+$api = app(\Dingo\Api\Routing\Router::class);
+
+$api->version('v1', function ($api)
+{
+    // API
+    $api->group(['middleware' => 'api.auth'], function ($api)
+    {
+        $except = ['except' => ['create', 'edit']];
+        $api->resource('age_range', ipmedt5c\Http\Controllers\AgeRangeController::class, $except);
+        $api->resource('game',    \ipmedt5c\Http\Controllers\GameController::class, $except);
+        $api->resource('genre',    \ipmedt5c\Http\Controllers\GenreController::class, $except);
+        $api->resource('platform',    \ipmedt5c\Http\Controllers\PlatformController::class, $except);
+        $api->resource('product',    \ipmedt5c\Http\Controllers\ProductController::class, $except);
+        $api->resource('publisher',    \ipmedt5c\Http\Controllers\PublisherController::class, $except);
+        $api->resource('video',    \ipmedt5c\Http\Controllers\VideoController::class, $except);
+
+    });
+    // Authenticate
+    $api->post('authenticate',       ['as' => 'authenticate.user',  'uses' => '\ipmedt5c\Http\Controllers\AuthenticateController@authenticate']);
+//    $api->post('authenticate/shelf', ['as' => 'authenticate.shelf', 'uses' => '\IPMEDT5A\Http\Controllers\AuthenticateController@authenticateShelf']);
 });
 
-Route::get('/product/{tag_id}', 'ProductController@tagId');
+
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+//
+//Route::get('/product/{tag_id}', 'ProductController@tagId');
