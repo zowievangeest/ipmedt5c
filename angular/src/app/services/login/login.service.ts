@@ -13,7 +13,7 @@ export class LoginService {
 
   constructor(private http: Http) {
       const headers = new Headers();
-      headers.append('Content-Type', 'multipart/form-data');
+      headers.append('Content-Type', 'multipart/json');
       this.options = new RequestOptions({headers});
   }
 
