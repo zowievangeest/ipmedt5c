@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Game extends Model
 {
 
-    protected $with = ['publisher', 'video', 'age_range'];
+    protected $with = ['publisher', 'video', 'age_range', 'genres'];
 
     public function publisher()
     {
@@ -22,6 +22,11 @@ class Game extends Model
     public function age_range()
     {
         return $this->hasOne('ipmedt5c\Age_range', 'id', 'age_range_id');
+    }
+
+    public function genres()
+    {
+        return $this->belongsToMany('ipmedt5c\Genre', 'games_genres', 'game_id', 'genre_id');
     }
 
 }
