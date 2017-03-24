@@ -10,11 +10,11 @@ class PublisherController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     public function index()
     {
-        //
+        return Publisher::all();
     }
 
     /**
@@ -42,11 +42,11 @@ class PublisherController extends Controller
      * Display the specified resource.
      *
      * @param  \ipmedt5c\Publisher  $publisher
-     * @return \Illuminate\Http\Response
+     * @return Publisher
      */
     public function show(Publisher $publisher)
     {
-        //
+        return $publisher;
     }
 
     /**

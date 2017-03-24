@@ -10,11 +10,11 @@ class AgeRangeController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     public function index()
     {
-        //
+        return Age_range::all();
     }
 
     /**
@@ -42,11 +42,11 @@ class AgeRangeController extends Controller
      * Display the specified resource.
      *
      * @param  \ipmedt5c\Age_range  $age_range
-     * @return \Illuminate\Http\Response
+     * @return Age_range
      */
     public function show(Age_range $age_range)
     {
-        //
+        return $age_range;
     }
 
     /**

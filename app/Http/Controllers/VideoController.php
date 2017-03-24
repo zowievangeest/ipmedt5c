@@ -10,11 +10,11 @@ class VideoController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     public function index()
     {
-        //
+        return Video::all();
     }
 
     /**
@@ -42,11 +42,11 @@ class VideoController extends Controller
      * Display the specified resource.
      *
      * @param  \ipmedt5c\Video  $video
-     * @return \Illuminate\Http\Response
+     * @return Video
      */
     public function show(Video $video)
     {
-        //
+        return $video;
     }
 
     /**

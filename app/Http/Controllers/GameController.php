@@ -10,11 +10,11 @@ class GameController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     public function index()
     {
-        //
+        return Game::all();
     }
 
     /**
@@ -42,11 +42,11 @@ class GameController extends Controller
      * Display the specified resource.
      *
      * @param  \ipmedt5c\Game  $game
-     * @return \Illuminate\Http\Response
+     * @return Game
      */
     public function show(Game $game)
     {
-        //
+        return $game;
     }
 
     /**

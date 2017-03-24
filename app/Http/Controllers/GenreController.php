@@ -10,11 +10,11 @@ class GenreController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     public function index()
     {
-        //
+        return Genre::all();
     }
 
     /**
@@ -42,11 +42,11 @@ class GenreController extends Controller
      * Display the specified resource.
      *
      * @param  \ipmedt5c\Genre  $genre
-     * @return \Illuminate\Http\Response
+     * @return Genre
      */
     public function show(Genre $genre)
     {
-        //
+        return $genre;
     }
 
     /**
