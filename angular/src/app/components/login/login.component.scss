@@ -1,0 +1,23 @@
+@import '../../../styles';
+
+.login-page {
+  background-image: url('../../../assets/img/login-page-background.svg'),linear-gradient(180deg,$brand-secondary,$brand-thrid);
+  background-position: 50%;
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.login-form {
+  font-weight: 500;
+  line-height: 1.5em;
+  padding: 1em;
+}
+
+.login-button {
+  padding: 1em;
+}
