@@ -5,8 +5,8 @@ import { HttpModule } from '@angular/http';
 
 import {RoutingModule} from "./modules/routing.module";
 
-import { AppComponent } from './app/app.component';
-import { LoginComponent } from './login/login.component';
+import { AppComponent } from './components/app/app.component';
+import { LoginComponent } from './components/login/login.component';
 import {RouterModule} from "@angular/router";
 
 import {LoginService} from "./services/login/login.service";
