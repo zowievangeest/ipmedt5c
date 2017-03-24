@@ -2043,7 +2043,7 @@ var $export  = __webpack_require__(1)
 
 if(setProto)$export($export.S, 'Reflect', {
   setPrototypeOf: function setPrototypeOf(target, proto){
-    setProto.check(target, proto);
+    LoginGuard.check(target, proto);
     try {
       setProto.set(target, proto);
       return true;

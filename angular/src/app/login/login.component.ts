@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {LoginService} from "../services/login/login.service";
 import {Router} from "@angular/router";
+import {LoginGuard} from "../guards/login.guard";
 
 @Component({
   selector: 'app-login',
@@ -17,9 +18,14 @@ export class LoginComponent implements OnInit {
 
   constructor(private  formBuilder: FormBuilder,
               private loginService: LoginService,
-              private router:Router) { }
+              private router: Router) { }
 
   ngOnInit() {
+
+      if (LoginGuard.check()) {
+          this.router.navigateByUrl('/')
+      }
+
       this.loginForm = this.formBuilder.group({
           'email':[null, [Validators.required, Validators.email]],
           'password': [null, [Validators.required]]
@@ -31,6 +37,7 @@ export class LoginComponent implements OnInit {
 
       this.loginService.login(value).subscribe(
           (res: any) => {
+              //TODO: route (dashboard)
               this.router.navigateByUrl('/');
           },
           (err: number) => {
