@@ -10,11 +10,11 @@ class PlatformController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Http\Response|static[]
      */
     public function index()
     {
-        //
+        return Platform::all();
     }
 
     /**
@@ -42,11 +42,11 @@ class PlatformController extends Controller
      * Display the specified resource.
      *
      * @param  \ipmedt5c\Platform  $platform
-     * @return \Illuminate\Http\Response
+     * @return Platform
      */
     public function show(Platform $platform)
     {
-        //
+        return $platform;
     }
 
     /**
