@@ -10,7 +10,7 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     public function index()
     {
@@ -41,12 +41,11 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \ipmedt5c\Product  $product
-     * @return \Illuminate\Http\Response
+     *
      */
-    public function show(Product $product)
+    public function show($tag_id)
     {
-        return $product;
+        return Product::where('tag_id', $tag_id)->first();
     }
 
     /**
@@ -81,10 +80,5 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
-    }
-
-    public function tagId($tag_id)
-    {
-        return Product::where('tag_id', $tag_id)->first();
     }
 }
