@@ -14,8 +14,12 @@ export class LoginGuard implements CanActivate {
         if(localStorage.getItem('token')) {
             return true;
         }
-        this.router.navigateByUrl('/login');
+        this.redirect('/login');
 
         return false;
+    }
+
+    public redirect(url:string = '/'): void {
+        this.router.navigateByUrl(url);
     }
 }
