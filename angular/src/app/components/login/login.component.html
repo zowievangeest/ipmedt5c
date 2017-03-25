@@ -1,8 +1,7 @@
-<div class="alert alert-success" role="alert">
-    <span *ngIf="msg" [innerText]="msg"></span>
-</div>
-
-<div class="container login-page">
+<div class="login-page">
+    <!--<div class="alert alert-success" role="alert">-->
+        <!--<span *ngIf="msg" [innerText]="msg"></span>-->
+    <!--</div>-->
     <div class="row align-middle mt-5">
         <div class="col-md-4 offset-md-4 mt-5">
             <div class="logo mb-5">
@@ -12,15 +11,14 @@
             <form [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.value)">
                 <div class="form-group" [ngClass]="{'has-danger': !loginForm.controls['email'].valid && loginForm.controls['email'].touched}" >
                     <input type="email" class="form-control form-control-danger login-form" id="email" aria-describedby="email-help" placeholder="Email" [formControl]="loginForm.controls['email']">
-                        <div class="form-control-feedback" *ngIf="!loginForm.controls['email'].valid && loginForm.controls['email'].touched">Shucks, check the formatting of that and try again.</div>
+                        <div class="form-control-feedback" *ngIf="!loginForm.controls['email'].valid && loginForm.controls['email'].touched">Voer een geldig email adres in.</div>
                 </div>
                 <div class="form-group" [ngClass]="{'has-danger': !loginForm.controls['email'].valid && loginForm.controls['email'].touched}">
                     <input type="password" class="form-control login-form" id="exampleInputPassword1" placeholder="Password" [formControl]="loginForm.controls['password']">
-                    <div class="form-control-feedback" *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">Shucks, check the formatting of that and try again.</div>
+                    <div class="form-control-feedback" *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">Voer een wachtwoord in.</div>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block login-button mt-5" [disabled]="!loginForm.valid">Login</button>
             </form>
         </div>
     </div>
 </div>
-
