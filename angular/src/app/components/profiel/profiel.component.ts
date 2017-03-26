@@ -11,11 +11,11 @@ export class ProfielComponent implements OnInit {
   private profiel: any;
   public user: any;
 
-  constructor(private loginSerivce: LoginService) {
+  constructor(private loginService: LoginService) {
   }
 
   ngOnInit() {
-    this.loginSerivce.getUser().subscribe((res: any) => {
+    this.loginService.getUser().subscribe((res: any) => {
       this.profiel = res;
       this.user = JSON.parse(localStorage.getItem("user"));
     })

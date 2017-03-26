@@ -14,6 +14,7 @@ import {LoginGuard} from "./guards/login.guard";
 import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProfielComponent } from './components/profiel/profiel.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 @NgModule({
