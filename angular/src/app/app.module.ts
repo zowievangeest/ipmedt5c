@@ -21,8 +21,7 @@ import { ProfielComponent } from './components/profiel/profiel.component';
     AppComponent,
     LoginComponent,
     MenuComponent,
-    HeaderComponent,
-    ProfielComponent
+    HeaderComponent
   ],
   imports: [
     RoutingModule,

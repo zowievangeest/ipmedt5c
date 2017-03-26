@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {LoginService} from "../../services/login/login.service";
 
 @Component({
   selector: 'app-profiel',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfielComponent implements OnInit {
 
-  constructor() { }
+  private profiel: any;
+  public user: any;
+
+  constructor(private loginSerivce: LoginService) {
+  }
 
   ngOnInit() {
+    this.loginSerivce.getUser().subscribe((res: any) => {
+      this.profiel = res;
+      this.user = JSON.parse(localStorage.getItem("user"));
+    })
   }
+
 
 }

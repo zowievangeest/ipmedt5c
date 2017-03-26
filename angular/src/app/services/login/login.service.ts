@@ -6,21 +6,32 @@ import {url} from "../../../constants";
 import {Observable} from "rxjs";
 import {login} from "../../interfaces/login.interface";
 import {Router} from "@angular/router";
+import {user} from "../../interfaces/user.interface";
 
 @Injectable()
 export class LoginService {
 
-    private options: RequestOptions;
-    private url: string = 'localhost';
+  private url: string = 'localhost';
 
-  constructor(private http: Http, private router: Router) {
-      const headers = new Headers();
+  private static headers(authentication: boolean = false, json: boolean = false): RequestOptions {
+
+    const headers = new Headers();
+
+    if (authentication) {
+      headers.append('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    }
+
+    if (json) {
       headers.append('Content-Type', 'multipart/json');
-      this.options = new RequestOptions({headers});
+    }
+
+    return new RequestOptions({headers});
   }
 
+  constructor(private http: Http, private router: Router) {}
+
   public login(data: Object): Observable<boolean | null> {
-      return this.http.post(`${url}authenticate`, data, this.options)
+      return this.http.post(`${url}authenticate`, data, LoginService.headers(false, true))
           .map((res: Response) => res.json())
           .map((res: login) => {
               if(res.token.length > 0) {
@@ -39,8 +50,29 @@ export class LoginService {
           });
   }
 
+  public getUser(): Observable<boolean | null> {
+    return this.http.post(`${url}authenticate/checkuser`, null, LoginService.headers(true))
+        .map((res: Response) => res.json())
+        .map((res: user) => {
+          if(res.user) {
+            localStorage.setItem('user', JSON.stringify(res.user));
+            return true;
+          }
+
+          return false;
+        }).
+        catch((error: any) => {
+          if(error.status === 401) {
+            return Observable.throw(error.status)
+          }
+        });
+  }
+
+
+
   public logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     this.router.navigateByUrl('/login');
   }
 
