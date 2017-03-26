@@ -13,6 +13,7 @@ import {LoginService} from "./services/login/login.service";
 import {LoginGuard} from "./guards/login.guard";
 import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ProfielComponent } from './components/profiel/profiel.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { HeaderComponent } from './components/header/header.component';
     AppComponent,
     LoginComponent,
     MenuComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProfielComponent
   ],
   imports: [
     RoutingModule,
