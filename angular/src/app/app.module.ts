@@ -13,8 +13,8 @@ import {LoginService} from "./services/login/login.service";
 import {LoginGuard} from "./guards/login.guard";
 import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
-import { ProfielComponent } from './components/profiel/profiel.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+
+import { SweetAlertService } from 'ng2-sweetalert2';
 
 
 @NgModule({
@@ -22,7 +22,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AppComponent,
     LoginComponent,
     MenuComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     RoutingModule,
@@ -34,7 +34,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
   ],
   providers: [
     LoginService,
-    LoginGuard
+    LoginGuard,
+    SweetAlertService
   ],
   bootstrap: [AppComponent]
 })

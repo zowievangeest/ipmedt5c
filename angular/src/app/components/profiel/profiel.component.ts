@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from "../../services/login/login.service";
+import {user} from "../../interfaces/user.interface";
 
 @Component({
   selector: 'app-profiel',
@@ -9,17 +10,16 @@ import {LoginService} from "../../services/login/login.service";
 export class ProfielComponent implements OnInit {
 
   private profiel: any;
-  public user: any;
+  public user: user;
 
   constructor(private loginService: LoginService) {
   }
 
   ngOnInit() {
-    this.loginService.getUser().subscribe((res: any) => {
+    this.loginService.getUser().subscribe((res: boolean) => {
       this.profiel = res;
       this.user = JSON.parse(localStorage.getItem("user"));
     })
   }
-
 
 }

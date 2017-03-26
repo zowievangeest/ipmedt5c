@@ -50,7 +50,7 @@ export class LoginService {
           });
   }
 
-  public getUser(): Observable<boolean | null> {
+  public getUser(): Observable<boolean> {
     return this.http.post(`${url}authenticate/checkuser`, null, LoginService.headers(true))
         .map((res: Response) => res.json())
         .map((res: user) => {
