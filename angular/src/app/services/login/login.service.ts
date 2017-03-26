@@ -5,6 +5,7 @@ import {url} from "../../../constants";
 
 import {Observable} from "rxjs";
 import {login} from "../../interfaces/login.interface";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class LoginService {
@@ -12,7 +13,7 @@ export class LoginService {
     private options: RequestOptions;
     private url: string = 'localhost';
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private router: Router) {
       const headers = new Headers();
       headers.append('Content-Type', 'multipart/json');
       this.options = new RequestOptions({headers});
@@ -36,6 +37,11 @@ export class LoginService {
                   return Observable.throw(error.status)
               }
           });
+  }
+
+  public logout(): void {
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/login');
   }
 
 }

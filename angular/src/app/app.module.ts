@@ -11,12 +11,16 @@ import { LoginComponent } from './components/login/login.component';
 
 import {LoginService} from "./services/login/login.service";
 import {LoginGuard} from "./guards/login.guard";
+import { MenuComponent } from './components/menu/menu.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    MenuComponent,
+    HeaderComponent
   ],
   imports: [
     RoutingModule,
