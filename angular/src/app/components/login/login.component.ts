@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {LoginService} from "../../services/login/login.service";
 import {LoginGuard} from "../../guards/login.guard";
+
+declare const swal: any;
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private  formBuilder: FormBuilder,
               private loginService: LoginService,
-              private loginGuard: LoginGuard) { }
+              private loginGuard: LoginGuard) {
+  }
 
   ngOnInit() {
 
@@ -36,17 +39,25 @@ export class LoginComponent implements OnInit {
 
       this.loginService.login(value).subscribe(
           (res: any) => {
+
               //TODO: route (dashboard)
-              this.loginGuard.redirect();
+            swal({
+              title: "Succes!",
+              text: "U bent nu ingelogd!",
+              type: "success"
+            });
+            this.loginGuard.redirect('/dashboard');
           },
           (err: number) => {
               if (err === 401){
-                this.msg = 'Login is niet correct';
+                swal("Oops", "Verkeerde email of wachtwoord", "error");
+                // this.msg = 'Login is niet correct';
               } else if (err === 500) {
                 this.msg = 'Probeer het op een ander moment nog eens';
               }
           }
       )
   }
+
 
 }

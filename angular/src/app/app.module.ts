@@ -11,12 +11,18 @@ import { LoginComponent } from './components/login/login.component';
 
 import {LoginService} from "./services/login/login.service";
 import {LoginGuard} from "./guards/login.guard";
+import { MenuComponent } from './components/menu/menu.component';
+import { HeaderComponent } from './components/header/header.component';
+
+import { SweetAlertService } from 'ng2-sweetalert2';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    MenuComponent,
+    HeaderComponent,
   ],
   imports: [
     RoutingModule,
@@ -28,7 +34,8 @@ import {LoginGuard} from "./guards/login.guard";
   ],
   providers: [
     LoginService,
-    LoginGuard
+    LoginGuard,
+    SweetAlertService
   ],
   bootstrap: [AppComponent]
 })

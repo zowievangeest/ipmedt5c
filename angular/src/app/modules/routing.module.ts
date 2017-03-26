@@ -22,6 +22,20 @@ const routes: Routes = [
     canActivate: [
       LoginGuard
     ]
+  },
+  {
+    path: 'profiel',
+    loadChildren: './profiel.module#ProfielModule',
+    canActivate: [
+      LoginGuard
+    ]
+  },
+  {
+    path: 'dashboard',
+    loadChildren: './dashboard.module#DashboardModule',
+    canActivate: [
+      LoginGuard
+    ]
   }
 ];
 
