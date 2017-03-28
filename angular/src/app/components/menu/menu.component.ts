@@ -10,7 +10,7 @@ import {LoginGuard} from "../../guards/login.guard";
 })
 export class MenuComponent implements OnInit {
 
-  private loggedIn: boolean;
+  public loggedIn: boolean;
 
   constructor(private loginService: LoginService, private router:Router) { }
 

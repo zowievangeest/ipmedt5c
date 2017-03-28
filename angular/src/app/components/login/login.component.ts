@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  private submitForm(value: Object) {
+  public submitForm(value: Object) {
       console.log(value);
 
       this.loginService.login(value).subscribe(
