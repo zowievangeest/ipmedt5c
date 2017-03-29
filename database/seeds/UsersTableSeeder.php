@@ -28,6 +28,34 @@ class UsersTableSeeder extends Seeder
                 'password'   => Hash::make(env('USER_PASSWORD', 'secret')),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
+            ],
+            [
+                'name'       => 'Tim Solte',
+                'email'      => '1082741@student.hsleiden.nl',
+                'password'   => Hash::make(env('USER_PASSWORD', 'secret')),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name'       => 'Rick van Megen',
+                'email'      => '1098012@student.hsleiden.nl',
+                'password'   => Hash::make(env('USER_PASSWORD', 'secret')),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name'       => 'Jessey Fransen',
+                'email'      => '1094286@student.hsleiden.nl',
+                'password'   => Hash::make(env('USER_PASSWORD', 'secret')),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name'       => 'Admin',
+                'email'      => 'admin@netgame.nl',
+                'password'   => Hash::make(env('ADMIN_PASSWORD', 'secret')),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ]
         ]);
     }
