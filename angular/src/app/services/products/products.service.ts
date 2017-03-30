@@ -23,6 +23,14 @@ export class ProductsService {
         .map((res: Response) => res.json())
         .map((res: any) => {
           console.log(res);
+
+          for (let product in res.products) {
+            if (res.products.hasOwnProperty(product)) {
+              res.products[product]['game']['release_date'] = new Date(res.products[product]['game']['release_date']).toLocaleString([], { year: "numeric", month: "numeric",
+                day: "numeric" });
+            }
+          }
+
           return res.products;
         }).catch((error: any) => {
           if (error.status == 401) {

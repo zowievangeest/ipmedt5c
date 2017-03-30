@@ -15,7 +15,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
 
 import { SweetAlertService } from 'ng2-sweetalert2';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
+import {ProductsService} from "./services/products/products.service";
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { HomeComponent } from './home/home.component';
   providers: [
     LoginService,
     LoginGuard,
-    SweetAlertService
+    SweetAlertService,
+    ProductsService
   ],
   bootstrap: [AppComponent]
 })
