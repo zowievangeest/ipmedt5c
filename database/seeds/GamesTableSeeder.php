@@ -19,6 +19,7 @@ class GamesTableSeeder extends Seeder
                     'short_description' => 'league short description',
                     'description' => 'league description',
                     'release_date' => Carbon::create(2009, 10, 27),
+                    'price' => 49.99,
                     'publisher_id' => 1,
                     'video_id' => 1,
                     'age_range_id' => 3

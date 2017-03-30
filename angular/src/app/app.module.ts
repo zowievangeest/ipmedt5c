@@ -15,6 +15,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
 
 import { SweetAlertService } from 'ng2-sweetalert2';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { SweetAlertService } from 'ng2-sweetalert2';
     LoginComponent,
     MenuComponent,
     HeaderComponent,
+    HomeComponent,
   ],
   imports: [
     RoutingModule,

@@ -23,7 +23,7 @@ export class ProductsService {
         .map((res: Response) => res.json())
         .map((res: any) => {
           console.log(res);
-          return res;
+          return res.products;
         }).catch((error: any) => {
           if (error.status == 401) {
             return Observable.throw(error.status);
