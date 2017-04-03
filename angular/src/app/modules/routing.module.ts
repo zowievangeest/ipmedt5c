@@ -6,12 +6,17 @@ import {IdlePreload, IdlePreloadModule} from "./idle.preload.module";
 import {LoginComponent} from "../components/login/login.component";
 
 import {LoginGuard} from "../guards/login.guard";
+import {HomeComponent} from "../components/home/home.component";
 
 const routes: Routes = [
-  // {
-  //     path: '',
-  //     pathMatch: 'full'
-  // },
+  {
+    path: '',
+    component: HomeComponent,
+    pathMatch: 'full',
+    canActivate: [
+      LoginGuard
+    ]
+  },
   {
     path: 'login',
     component: LoginComponent

@@ -24,39 +24,39 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-      if (LoginGuard.check()) {
-          this.loginGuard.redirect();
-      }
 
-      this.loginForm = this.formBuilder.group({
-          'email':[null, [Validators.required, Validators.email]],
-          'password': [null, [Validators.required]]
-      });
+    if (LoginGuard.check()) {
+      this.loginGuard.redirect();
+    }
+
+    this.loginForm = this.formBuilder.group({
+      'email': [null, [Validators.required, Validators.email]],
+      'password': [null, [Validators.required]]
+    });
   }
 
   public submitForm(value: Object) {
-      console.log(value);
+    console.log(value);
 
-      this.loginService.login(value).subscribe(
-          (res: any) => {
+    this.loginService.login(value).subscribe(
+        (res: any) => {
 
-              //TODO: route (dashboard)
-            swal({
-              title: "Succes!",
-              text: "U bent nu ingelogd!",
-              type: "success"
-            });
-            this.loginGuard.redirect('/dashboard');
-          },
-          (err: number) => {
-              if (err === 401){
-                swal("Oops", "Verkeerde email of wachtwoord", "error");
-                // this.msg = 'Login is niet correct';
-              } else if (err === 500) {
-                this.msg = 'Probeer het op een ander moment nog eens';
-              }
+          //TODO: route (dashboard)
+          swal({
+            title: "Succes!",
+            text: "U bent nu ingelogd!",
+            type: "success"
+          });
+          this.loginGuard.redirect('/dashboard');
+        },
+        (err: number) => {
+          if (err === 401) {
+            swal("Oops", "Verkeerde email of wachtwoord", "error");
+          } else if (err === 500) {
+            swal("Oops", "Probeer het nog eens", "error");
           }
-      )
+        }
+    )
   }
 
 

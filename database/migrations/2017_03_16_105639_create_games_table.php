@@ -19,6 +19,7 @@ class CreateGamesTable extends Migration
             $table->string('short_description');
             $table->longText('description');
             $table->date('release_date');
+            $table->decimal('price',5 ,2)->unsigned();
             $table->integer('publisher_id')->unsigned();
             $table->integer('video_id')->unsigned();
             $table->integer('age_range_id')->unsigned();

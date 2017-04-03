@@ -15,7 +15,7 @@ class VideosTableSeeder extends Seeder
             [
                 [
                     'title' => 'STEEP Gameplay Trailer',
-                    'url' => 'https://www.youtube.com/watch?v=YGOu-raM25k'
+                    'url' => 'https://www.youtube.com/watch?v=YGOu-raM25k',
                 ],
                 [
                     'title' => 'Project Cars launch trailer',

@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\App;
+
 Route::get('{any}', function () {
     return File::get(public_path('index.html'));
 })->where('any', '.*');

@@ -22,8 +22,15 @@ export class ProductsService {
     return this.http.get(`${url}product`, this.getOptions)
         .map((res: Response) => res.json())
         .map((res: any) => {
-          console.log(res);
-          return res;
+
+          for (let product in res.products) {
+            if (res.products.hasOwnProperty(product)) {
+              res.products[product]['game']['release_date'] = new Date(res.products[product]['game']['release_date']).toLocaleString([], { year: "numeric", month: "numeric",
+                day: "numeric" });
+            }
+          }
+
+          return res.products;
         }).catch((error: any) => {
           if (error.status == 401) {
             return Observable.throw(error.status);

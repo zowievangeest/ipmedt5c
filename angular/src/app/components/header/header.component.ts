@@ -11,6 +11,7 @@ import {LoginGuard} from "../../guards/login.guard";
 export class HeaderComponent implements OnInit {
 
   public loggedIn: boolean;
+  public url: string="/";
 
   constructor(private router:Router) { }
 
@@ -20,6 +21,13 @@ export class HeaderComponent implements OnInit {
     });
 
     this.loggedIn = LoginGuard.check();
+
+    this.router.events.subscribe((url: any) => {
+      if (typeof(url.url) !== 'undefined') {
+        this.url = url.url;
+      }
+    });
+
   }
 
 }
