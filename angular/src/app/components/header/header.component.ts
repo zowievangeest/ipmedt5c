@@ -25,7 +25,6 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe((url: any) => {
       if (typeof(url.url) !== 'undefined') {
         this.url = url.url;
-        console.log(this.url);
       }
     });
 

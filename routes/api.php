@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Vinkla\Pusher\Facades\Pusher;
+use \ipmedt5c\Events\ScanGameEvent;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +36,7 @@ $api->version('v1', function ($api)
     $api->post('authenticate',              ['as' => 'authenticate.user',  'uses' => '\ipmedt5c\Http\Controllers\AuthenticateController@authenticate']);
     $api->post('authenticate/checkuser',    ['as' => 'authenticate.checkuser',  'uses' => '\ipmedt5c\Http\Controllers\AuthenticateController@authenticateCheck']);
 //    $api->post('authenticate/shelf', ['as' => 'authenticate.shelf', 'uses' => '\IPMEDT5A\Http\Controllers\AuthenticateController@authenticateShelf']);
+    $api->get('pushertest', function (){
+        Pusher::trigger('scan-game', 'scan-game', ['message' => 'Dit is een test bericht']);
+    });
 });

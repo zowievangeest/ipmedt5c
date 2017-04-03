@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
         (res: any) => {
           this.products = res;
         }
-    )
+    );
   }
 
   public videoUrl() {

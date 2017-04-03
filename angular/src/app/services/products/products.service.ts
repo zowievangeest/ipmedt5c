@@ -22,7 +22,6 @@ export class ProductsService {
     return this.http.get(`${url}product`, this.getOptions)
         .map((res: Response) => res.json())
         .map((res: any) => {
-          console.log(res);
 
           for (let product in res.products) {
             if (res.products.hasOwnProperty(product)) {

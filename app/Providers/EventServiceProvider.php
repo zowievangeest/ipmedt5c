@@ -4,6 +4,7 @@ namespace ipmedt5c\Providers;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use ipmedt5c\Events\ScanGameEvent;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -12,11 +13,7 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $listen = [
-        'ipmedt5c\Events\SomeEvent' => [
-            'ipmedt5c\Listeners\EventListener',
-        ],
-    ];
+    protected $listen = [];
 
     /**
      * Register any events for your application.
