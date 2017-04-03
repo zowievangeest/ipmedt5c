@@ -193,6 +193,11 @@ return [
          */
         \Barryvdh\Cors\ServiceProvider::class,
 
+        /*
+         * Pusher
+         */
+        Vinkla\Pusher\PusherServiceProvider::class
+
     ],
 
     /*
