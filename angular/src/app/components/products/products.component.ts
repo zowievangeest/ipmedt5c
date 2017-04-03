@@ -8,7 +8,7 @@ import {ProductsService} from "../../services/products/products.service";
 })
 export class ProductsComponent implements OnInit {
 
-  private products: any;
+  public products: any;
 
   constructor(private productService: ProductsService) { }
 
