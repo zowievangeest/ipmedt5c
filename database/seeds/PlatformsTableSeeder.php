@@ -19,6 +19,16 @@ class PlatformsTableSeeder extends Seeder
                     'brand' => 'Sony'
                 ],
                 [
+                    'name' => 'PS3',
+                    'name_slug' => str_slug('Playstation 3'),
+                    'brand' => 'Sony'
+                ],
+                [
+                    'name' => 'Xbox One',
+                    'name_slug' => str_slug('Xbox One'),
+                    'brand' => 'Microsoft'
+                ],
+                [
                     'name' => 'Xbox 360',
                     'name_slug' => str_slug('Xbox 360'),
                     'brand' => 'Microsoft'

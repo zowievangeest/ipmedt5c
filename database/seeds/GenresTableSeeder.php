@@ -14,10 +14,22 @@ class GenresTableSeeder extends Seeder
         DB::table('genres')->insert(
             [
                 [
-                    'name' => 'MOBA',
+                    'name' => 'Extreme Sports',
                 ],
                 [
-                    'name' => 'FPS',
+                    'name' => 'Third Person Shooter',
+                ],
+                [
+                    'name' => 'Action',
+                ],
+                [
+                    'name' => 'Adventure',
+                ],
+                [
+                    'name' => 'Racing simulation',
+                ],
+                [
+                    'name' => 'First Person Shooter',
                 ]
             ]
         );

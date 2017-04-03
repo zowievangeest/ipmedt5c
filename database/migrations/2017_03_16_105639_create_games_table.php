@@ -17,7 +17,7 @@ class CreateGamesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('short_description');
-            $table->string('description');
+            $table->longText('description');
             $table->date('release_date');
             $table->decimal('price',5 ,2)->unsigned();
             $table->integer('publisher_id')->unsigned();

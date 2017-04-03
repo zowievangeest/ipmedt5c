@@ -14,8 +14,21 @@ class PublishersTableSeeder extends Seeder
         DB::table('publishers')->insert(
             [
                 [
-                    'publisher' => 'Riot Games'
+                    'publisher' => 'Slightly Mad Studios'
                 ],
+                [
+                    'publisher' => 'Ubisoft'
+                ],
+                [
+                    'publisher' => 'Activison'
+                ],
+                [
+                    'publisher' => 'Codemasters'
+                ],
+                [
+                    'publisher' => 'EA'
+                ],
+
             ]
         );
     }
