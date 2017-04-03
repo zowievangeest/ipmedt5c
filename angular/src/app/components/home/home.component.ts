@@ -23,7 +23,8 @@ export class HomeComponent implements OnInit {
   }
 
   public videoUrl() {
-    return this.domSanitizer.bypassSecurityTrustResourceUrl(this.products[0]['game']['video']['url']+'?autoplay=1');
+    // TODO:: Change autplay
+    return this.domSanitizer.bypassSecurityTrustResourceUrl(this.products[0]['game']['video']['url']+'?autoplay=0');
   }
 
 }
