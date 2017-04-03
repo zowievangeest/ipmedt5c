@@ -32,11 +32,13 @@ $api->version('v1', function ($api)
         $api->resource('video',    \ipmedt5c\Http\Controllers\VideoController::class, $except);
 
     });
+
+    $api->get('test', function() {
+        event(new ScanGameEvent("hallo!"));
+    });
+
     // Authenticate
     $api->post('authenticate',              ['as' => 'authenticate.user',  'uses' => '\ipmedt5c\Http\Controllers\AuthenticateController@authenticate']);
     $api->post('authenticate/checkuser',    ['as' => 'authenticate.checkuser',  'uses' => '\ipmedt5c\Http\Controllers\AuthenticateController@authenticateCheck']);
 //    $api->post('authenticate/shelf', ['as' => 'authenticate.shelf', 'uses' => '\IPMEDT5A\Http\Controllers\AuthenticateController@authenticateShelf']);
-    $api->get('pushertest', function (){
-        Pusher::trigger('scan-game', 'scan-game', ['message' => 'Dit is een test bericht']);
-    });
 });

@@ -33,6 +33,11 @@ class ScanGameEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('scan-game');
+        return ['scan-game'];
+    }
+
+    public function broadcastAs()
+    {
+        return 'game.scanned';
     }
 }
