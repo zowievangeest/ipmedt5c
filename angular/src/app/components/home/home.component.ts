@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
 
   public videoUrl() {
     // TODO:: Change autplay
-    return this.domSanitizer.bypassSecurityTrustResourceUrl(this.products[0]['game']['video']['url']+'?autoplay=0');
+    return this.domSanitizer.bypassSecurityTrustResourceUrl(this.products[0]['game']['video']['url']+'?autoplay=1');
   }
 
 }
