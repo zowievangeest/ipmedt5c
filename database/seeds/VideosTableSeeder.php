@@ -15,7 +15,7 @@ class VideosTableSeeder extends Seeder
             [
                 [
                     'title' => 'Welcome to League of Legends',
-                    'url' => 'https://www.youtube.com/embed/IzMnCv_lPxI'
+                    'url' => 'https://www.youtube.com/embed/vzHrjOMfHPY'
                 ],
             ]
         );
