@@ -14,11 +14,46 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert(
             [
                 [
-                    'tag_id' => 123,
                     'game_id' => 1,
-                    'platform_id' => 4,
-                    'user_id' => 1
-                ]
+                    'platform_id' => 1,
+                    'user_id' => 5
+                ],
+                [
+                    'game_id' => 2,
+                    'platform_id' => 1,
+                    'user_id' => 5
+                ],
+                [
+                    'game_id' => 3,
+                    'platform_id' => 1,
+                    'user_id' => 5
+                ],
+                [
+                    'game_id' => 4,
+                    'platform_id' => 1,
+                    'user_id' => 5
+                ],
+                [
+                    'game_id' => 5,
+                    'platform_id' => 1,
+                    'user_id' => 5
+                ],
+                [
+                    'game_id' => 6,
+                    'platform_id' => 1,
+                    'user_id' => 5
+                ],
+                [
+                    'game_id' => 7,
+                    'platform_id' => 1,
+                    'user_id' => 5
+                ],
+                [
+                    'game_id' => 8,
+                    'platform_id' => 1,
+                    'user_id' => 5
+                ],
+
             ]
         );
     }

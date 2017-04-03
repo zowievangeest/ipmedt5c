@@ -31,21 +31,21 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'name'       => 'Tim Solte',
-                'email'      => '1082741@student.hsleiden.nl',
+                'email'      => 's1082741@student.hsleiden.nl',
                 'password'   => Hash::make(env('USER_PASSWORD', 'secret')),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
                 'name'       => 'Rick van Megen',
-                'email'      => '1098012@student.hsleiden.nl',
+                'email'      => 's1098012@student.hsleiden.nl',
                 'password'   => Hash::make(env('USER_PASSWORD', 'secret')),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
                 'name'       => 'Jessey Fransen',
-                'email'      => '1094286@student.hsleiden.nl',
+                'email'      => 's1094286@student.hsleiden.nl',
                 'password'   => Hash::make(env('USER_PASSWORD', 'secret')),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()

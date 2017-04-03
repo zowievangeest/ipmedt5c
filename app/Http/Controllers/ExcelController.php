@@ -3,8 +3,6 @@
 namespace ipmedt5c\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use ipmedt5c\Platform;
 
@@ -15,22 +13,31 @@ class ExcelController extends Controller
         return view('importExport');
     }
 
-    public function importExcel()
+    public function importExcel(Request $request)
     {
-        if (Input::hasFile('import_file')){
-            $path = Input::file('import_file')->getRealPath();
-            $data = Excel::load($path, function ($reader) {
-            })->get();
+        if ($request->hasFile('import_file')) {
+            $path = $request->file('import_file')->getRealPath();
+
+            $data = Excel::load($path, function ($reader) {})->get();
+
             if (!empty($data) && $data->count()) {
-                foreach ($data as $key => $value) {
-                    $insert[] = ['name' => $value->name, 'name_slug' => $value->name_slug, 'brand' => $value->brand];
+                foreach ($data->toArray() as $key => $value) {
+                    if (!empty($value)) {
+                        foreach ($value as $v) {
+                            $insertPlatform[] = ['name' => $v['name'],
+                                                ['']
+                            ];
+
+                        }
+                    }
                 }
+
                 if(!empty($insert)) {
-                    DB::table('platforms')->insert($insert);
-                    dd('Insert Record successfully');
+                    Platform::insert($insertPlatform);
+                    return back()->with('success', 'Insert Record successfully');
                 }
             }
         }
-        return back();
+        return back()->with('error', 'something went wrong');
     }
 }
