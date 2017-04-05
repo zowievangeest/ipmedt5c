@@ -18,6 +18,7 @@ class CreatePlatformsTable extends Migration
             $table->string('name');
             $table->string('name_slug');
             $table->string('brand');
+            $table->integer('statistics_id');
             $table->timestamps();
         });
     }

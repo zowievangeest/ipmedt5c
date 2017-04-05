@@ -15,7 +15,7 @@ class StatisticsViews extends Migration
     {
         Schema::create('statistics_views', function (Blueprint $table) {
             $table->increments('statistic_id');
-            $table->increments('View_id');
+            $table->increments('view_id');
             $table->timestamps();
         });
     }

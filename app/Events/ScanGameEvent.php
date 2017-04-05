@@ -14,16 +14,16 @@ class ScanGameEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $text;
+    public $uid;
 
     /**
      * Create a new event instance.
      *
-     * @return void
+     * @param $uid
      */
-    public function __construct($text)
+    public function __construct($uid)
     {
-        $this->text = $text;
+        $this->uid = $uid;
     }
 
     /**

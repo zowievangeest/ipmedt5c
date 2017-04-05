@@ -82,4 +82,44 @@ class StatisticController extends Controller
     {
         //
     }
+
+
+    public function general()
+    {
+        return statistic::all();
+    }
+
+
+    public function platforms()
+    {
+
+    }
+
+    public function platform($id)
+    {
+
+    }
+
+
+    public function products()
+    {
+
+    }
+
+    public function product($id)
+    {
+
+    }
+
+
+    public function games()
+    {
+
+    }
+
+    public function game($id)
+    {
+
+    }
+
 }
