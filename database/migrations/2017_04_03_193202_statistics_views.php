@@ -15,8 +15,8 @@ class StatisticsViews extends Migration
     {
         Schema::create('statistics_views', function (Blueprint $table) {
             $table->increments('id');
-            $table->increments('statistic_id')->unsigned()->index();
-            $table->increments('view_id')->unsigned()->index();
+            $table->integer('statistic_id')->unsigned()->index();
+            $table->integer('view_id')->unsigned()->index();
             $table->timestamps();
 
             $table->foreign('statistic_id')->references('id')->on('statistics')->onDelete('cascade');
