@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlatformsTable extends Migration
+class StatisticsViews extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreatePlatformsTable extends Migration
      */
     public function up()
     {
-        Schema::create('platforms', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('name_slug');
-            $table->string('brand');
-            $table->integer('statistics_id');
+        Schema::create('statistics_views', function (Blueprint $table) {
+            $table->increments('statistic_id');
+            $table->increments('view_id');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreatePlatformsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('platforms');
+        //
     }
 }

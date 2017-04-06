@@ -31,14 +31,20 @@ $api->version('v1', function ($api)
         $api->resource('publisher',    \ipmedt5c\Http\Controllers\PublisherController::class, $except);
         $api->resource('video',    \ipmedt5c\Http\Controllers\VideoController::class, $except);
 
+        $api->get('statistics', 'StatisticController');
+        $api->get('statistics/platforms', 'StatisticController@platforms');
+        $api->get('statistics/platforms/{id}', 'StatisticController@platform');
+        $api->get('statistics/products', 'StatisticController@products');
+        $api->get('statistics/product/{id}', 'StatisticController@product');
+        $api->get('statistics/games', 'StatisticController@games');
+        $api->get('statistics/games/{id}', 'StatisticController@game');
     });
 
-    $api->get('test', function() {
-        event(new ScanGameEvent("hallo!"));
+    $api->get('rfid/{uid}', function($uid) {
+        event(new ScanGameEvent($uid));
     });
 
     // Authenticate
     $api->post('authenticate',              ['as' => 'authenticate.user',  'uses' => '\ipmedt5c\Http\Controllers\AuthenticateController@authenticate']);
     $api->post('authenticate/checkuser',    ['as' => 'authenticate.checkuser',  'uses' => '\ipmedt5c\Http\Controllers\AuthenticateController@authenticateCheck']);
-//    $api->post('authenticate/shelf', ['as' => 'authenticate.shelf', 'uses' => '\IPMEDT5A\Http\Controllers\AuthenticateController@authenticateShelf']);
 });
