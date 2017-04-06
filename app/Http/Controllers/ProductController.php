@@ -99,7 +99,7 @@ class ProductController extends Controller
 
     public function productsStatistics()
     {
-        $products = Product::with('statistic')->whereHas('statistic', function($query)
+        $products = Product::with('statistic.view')->where('statistic_id', function($query)
         {
             $query->whereBetween('date', [Carbon::now()->subDay(7), Carbon::now()]);
         })->get();
