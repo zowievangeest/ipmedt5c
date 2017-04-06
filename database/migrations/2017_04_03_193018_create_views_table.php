@@ -15,8 +15,11 @@ class CreateViewsTable extends Migration
     {
         Schema::create('views', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('statistic_id')->unsigned();
             $table->dateTime('date');
             $table->timestamps();
+
+            $table->foreign('statistic_id')->references('id')->on('statistics')->onDelete('cascade');
         });
     }
 

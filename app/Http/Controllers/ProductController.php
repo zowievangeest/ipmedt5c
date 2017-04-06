@@ -2,8 +2,10 @@
 
 namespace ipmedt5c\Http\Controllers;
 
+use Carbon\Carbon;
 use ipmedt5c\Product;
 use Illuminate\Http\Request;
+use ipmedt5c\View;
 
 class ProductController extends Controller
 {
@@ -45,18 +47,31 @@ class ProductController extends Controller
      */
     public function show($tag_id)
     {
-        return Product::where('tag_id', $tag_id)->first();
+        $product = Product::where('tag_id', $tag_id)->first();
+
+        $view = new View;
+        $view->statistic_id = $product->statistic_id;
+        $view->date = Carbon::now();
+        $view->save();
+
+        return $product;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \ipmedt5c\Product  $product
+     * @param $id
+     * @param $tag_id
      * @return \Illuminate\Http\Response
+     * @internal param Product $product
      */
-    public function edit(Product $product)
+    public function edit($id, $tag_id)
     {
-        //
+        $product = Product::find($id);
+
+        $product->tag_id = $tag_id;
+
+        $product->save();
     }
 
     /**
@@ -80,5 +95,22 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    public function productsStatistics()
+    {
+        $products = Product::with('statistic')->whereHas('statistic', function($query)
+        {
+            $query->whereBetween('date', [Carbon::now()->subDay(7), Carbon::now()]);
+        })->get();
+
+        return $products;
+    }
+
+    public function productStatistics($id)
+    {
+        $product = Product::where('id', $id)->first();
+
+        return $product->statistic;
     }
 }

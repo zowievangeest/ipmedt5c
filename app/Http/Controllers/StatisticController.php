@@ -2,8 +2,11 @@
 
 namespace ipmedt5c\Http\Controllers;
 
+use Carbon\Carbon;
+use ipmedt5c\Platform;
 use ipmedt5c\statistic;
 use Illuminate\Http\Request;
+use ipmedt5c\View;
 
 class StatisticController extends Controller
 {
@@ -86,40 +89,7 @@ class StatisticController extends Controller
 
     public function general()
     {
-        return statistic::all();
-    }
-
-
-    public function platforms()
-    {
-
-    }
-
-    public function platform($id)
-    {
-
-    }
-
-
-    public function products()
-    {
-
-    }
-
-    public function product($id)
-    {
-
-    }
-
-
-    public function games()
-    {
-
-    }
-
-    public function game($id)
-    {
-
+        return View::whereBetween('date', [Carbon::now()->subDay(7), Carbon::now()])->get();
     }
 
 }

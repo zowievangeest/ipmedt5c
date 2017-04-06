@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class statistic extends Model
 {
-    protected $with = ['views'];
+    protected $with = ['view'];
 
-    public function views()
+    public function view()
     {
-        return $this->belongsToMany('ipmedt5c\View', 'statistics_views', 'statistic_id', 'view_id');
+        return $this->hasMany('ipmedt5c\View', 'statistic_id', 'id');
     }
 }
