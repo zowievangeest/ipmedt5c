@@ -25,8 +25,6 @@ $api->version('v1', function ($api)
     {
         $except = ['except' => ['create', 'edit']];
         $api->resource('age_range', \ipmedt5c\Http\Controllers\AgeRangeController::class, $except);
-        $api->resource('product',    \ipmedt5c\Http\Controllers\ProductController::class);
-
         $api->resource('game',    \ipmedt5c\Http\Controllers\GameController::class, $except);
         $api->resource('genre',    \ipmedt5c\Http\Controllers\GenreController::class, $except);
         $api->resource('platform',    \ipmedt5c\Http\Controllers\PlatformController::class, $except);
@@ -36,6 +34,8 @@ $api->version('v1', function ($api)
         $api->put('product/{id}/{tag_id}', ['as' => 'products', 'uses' => '\ipmedt5c\Http\Controllers\ProductController@edit']);
 
     });
+
+    $api->resource('product',    \ipmedt5c\Http\Controllers\ProductController::class);
 
     $api->get('statistics', ['as' => 'statistics', 'uses' => '\ipmedt5c\Http\Controllers\StatisticController@general']);
     $api->get('statistics/platforms', ['as' => 'statistics.platforms', 'uses' => '\ipmedt5c\Http\Controllers\PlatformController@platformsStatistics']);

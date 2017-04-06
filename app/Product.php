@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
 
-    protected $with = ['statistic', 'game', 'platform', 'user'];
+    protected $with = ['statistics', 'game', 'platform', 'user'];
 
-    public function statistic()
+    public function statistics()
     {
         return $this->hasOne('ipmedt5c\Statistic', 'id', 'statistic_id');
     }

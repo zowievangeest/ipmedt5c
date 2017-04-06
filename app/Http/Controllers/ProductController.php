@@ -50,9 +50,10 @@ class ProductController extends Controller
         $product = Product::where('tag_id', $tag_id)->first();
 
         $view = new View;
-        $view->statistic_id = $product->statistic_id;
         $view->date = Carbon::now();
         $view->save();
+
+        $view->statistics()->attach($product->statistic);
 
         return $product;
     }
@@ -99,18 +100,15 @@ class ProductController extends Controller
 
     public function productsStatistics()
     {
-        $products = Product::with('statistic.view')->where('statistic_id', function($query)
-        {
-            $query->whereBetween('date', [Carbon::now()->subDay(7), Carbon::now()]);
-        })->get();
+        $products = Product::with('statistics')->get();
 
         return $products;
     }
 
     public function productStatistics($id)
     {
-        $product = Product::where('id', $id)->first();
+        $product = Product::find($id)->statistics()->first();
 
-        return $product->statistic;
+        return $product;
     }
 }
