@@ -20,7 +20,7 @@ class CreateGamesTable extends Migration
             $table->longText('description');
             $table->date('release_date');
             $table->string('image_url');
-//            $table->integer('statistics_id')->unsigned();
+            $table->integer('statistic_id')->unsigned()->nullable();
             $table->decimal('price',5 ,2)->unsigned();
             $table->integer('publisher_id')->unsigned();
             $table->integer('video_id')->unsigned();
@@ -30,6 +30,7 @@ class CreateGamesTable extends Migration
             $table->foreign('publisher_id')->references('id')->on('publishers')->onDelete('cascade');
             $table->foreign('video_id')->references('id')->on('videos')->onDelete('cascade');
             $table->foreign('age_range_id')->references('id')->on('age_ranges')->onDelete('cascade');
+//            $table->foreign('statistic_id')->references('id')->on('statistics')->onDelete('cascade');
         });
     }
 
