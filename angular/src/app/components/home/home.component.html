@@ -12,18 +12,18 @@
         <div class="col-lg-8 offset-lg-2 video-info text-white">
             <div class="row">
                 <div class="col-lg-8 pl-5 pt-4">
-                    <p class="product-brand" *ngIf="products">{{ products[0]['platform']['name'] }} / {{ products[0]['platform']['brand'] }}</p>
-                    <p class="product-title" *ngIf="products">{{ products[0]['game']['name']}}</p>
-                    <p class="product-pub-rel" *ngIf="products">Gepubliseerd door: {{ products[0]['game']['publisher']['publisher'] }}</p>
-                    <p class="product-pub-rel" *ngIf="products">Release date: {{ products[0]['game']['release_date']}}</p>
+                    <p class="product-brand" *ngIf="products">{{ products['platform']['name'] }} / {{ products['platform']['brand'] }}</p>
+                    <p class="product-title" *ngIf="products">{{ products['game']['name']}}</p>
+                    <p class="product-pub-rel" *ngIf="products">Gepubliseerd door: {{ products['game']['publisher']['publisher'] }}</p>
+                    <p class="product-pub-rel" *ngIf="products">Release date: {{ products['game']['release_date']}}</p>
                 </div>
                 <div class="col-lg-2 my-auto">
                     <img src="../../../assets/img/gamepad.svg" alt="" class="product-icon mx-auto d-block">
-                    <p class="product-icon-text text-center pt-3" *ngIf="products">{{ products[0]['game']['genres'][0]['name']}}</p>
+                    <p class="product-icon-text text-center pt-3" *ngIf="products">{{ products['game']['genres'][0]['name']}}</p>
                 </div>
                 <div class="col-lg-2 my-auto">
                     <img src="../../../assets/img/shopping-cart.svg" alt="" class="product-icon mx-auto d-block">
-                    <p class="product-icon-text text-center pt-3" *ngIf="products">&euro; {{ products[0]['game']['price']}}</p>
+                    <p class="product-icon-text text-center pt-3" *ngIf="products">&euro; {{ products['game']['price']}}</p>
                 </div>
             </div>
         </div>

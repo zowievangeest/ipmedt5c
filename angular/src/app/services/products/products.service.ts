@@ -25,12 +25,28 @@ export class ProductsService {
 
           for (let product in res.products) {
             if (res.products.hasOwnProperty(product)) {
-              res.products[product]['game']['release_date'] = new Date(res.products[product]['game']['release_date']).toLocaleString([], { year: "numeric", month: "numeric",
-                day: "numeric" });
+              res.products[product]['game']['release_date'] = new Date(res.products[product]['game']['release_date']).toLocaleString([], {
+                year: "numeric", month: "numeric",
+                day: "numeric"
+              });
             }
           }
 
           return res.products;
+        }).catch((error: any) => {
+          if (error.status == 401) {
+            return Observable.throw(error.status);
+          } else if (error.status == 500) {
+            return Observable.throw(error.status);
+          }
+        });
+  }
+
+  public getProductByUid(uid: string): Observable<boolean | string> {
+    return this.http.get(`${url}product/${uid}`, this.getOptions)
+        .map((res: Response) => res.json())
+        .map((res: any) => {
+          return res.product;
         }).catch((error: any) => {
           if (error.status == 401) {
             return Observable.throw(error.status);

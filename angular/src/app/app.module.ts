@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 
 import {RouterModule} from "@angular/router";
 import {RoutingModule} from "./modules/routing.module";
+import {ToastModule} from "ng2-toastr";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 import { AppComponent } from './components/app/app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -33,7 +35,9 @@ import {ProductsService} from "./services/products/products.service";
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    ToastModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [
     LoginService,
