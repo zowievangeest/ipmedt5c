@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->integer('game_id')->unsigned();
             $table->integer('platform_id')->unsigned();
             $table->integer('user_id')->unsigned()->nullable();
-            $table->integer('statistics_id')->unsigned();
+//            $table->integer('statistics_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');

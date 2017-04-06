@@ -20,7 +20,7 @@ class CreateGamesTable extends Migration
             $table->longText('description');
             $table->date('release_date');
             $table->string('image_url');
-            $table->integer('statistics_id')->unsigned();
+//            $table->integer('statistics_id')->unsigned();
             $table->decimal('price',5 ,2)->unsigned();
             $table->integer('publisher_id')->unsigned();
             $table->integer('video_id')->unsigned();
