@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
          $this->call(GenresTableSeeder::class);
          $this->call(VideosTableSeeder::class);
          $this->call(Age_rangesTableSeeder::class);
+         $this->call(StatisticsTableSeeder::class);
          $this->call(GamesTableSeeder::class);
          $this->call(Games_genresTableSeeder::class);
          $this->call(ProductsTableSeeder::class);
