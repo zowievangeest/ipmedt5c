@@ -14,9 +14,13 @@ class StatisticsViews extends Migration
     public function up()
     {
         Schema::create('statistics_views', function (Blueprint $table) {
-            $table->increments('statistic_id');
-            $table->increments('view_id');
+            $table->increments('id');
+            $table->increments('statistic_id')->unsigned()->index();
+            $table->increments('view_id')->unsigned()->index();
             $table->timestamps();
+
+            $table->foreign('statistic_id')->references('id')->on('statistics')->onDelete('cascade');
+            $table->foreign('view_id')->references('id')->on('views')->onDelete('cascade');
         });
     }
 
