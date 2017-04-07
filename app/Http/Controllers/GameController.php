@@ -82,4 +82,18 @@ class GameController extends Controller
     {
         //
     }
+
+    public function gamesStatistics()
+    {
+        $games = Game::with('statistic')->get();
+
+        return $games;
+    }
+
+    public function gameStatistics($id)
+    {
+        $game = Game::where('id', $id)->first();
+
+        return $game->statistic;
+    }
 }

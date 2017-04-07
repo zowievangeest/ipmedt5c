@@ -38,6 +38,48 @@ class StatisticsTableSeeder extends Seeder
                 [
                     'type' => 'game'
                 ],
+                [
+                    'type' => 'product'
+                ],
+                [
+                    'type' => 'product'
+                ],
+                [
+                    'type' => 'product'
+                ],
+                [
+                    'type' => 'product'
+                ],
+                [
+                    'type' => 'product'
+                ],
+                [
+                    'type' => 'product'
+                ],
+                [
+                    'type' => 'product'
+                ],
+                [
+                    'type' => 'product'
+                ],
+                [
+                    'type' => 'platform'
+                ],
+                [
+                    'type' => 'platform'
+                ],
+                [
+                    'type' => 'platform'
+                ],
+                [
+                    'type' => 'platform'
+                ],
+                [
+                    'type' => 'platform'
+                ],
+                [
+                    'type' => 'platform'
+                ],
 
             ]
         );

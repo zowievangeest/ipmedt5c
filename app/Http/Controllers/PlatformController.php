@@ -82,4 +82,18 @@ class PlatformController extends Controller
     {
         //
     }
+
+    public function platformsStatistics()
+    {
+        $platforms = Platform::with('statistic')->get();
+
+        return $platforms;
+    }
+
+    public function platformStatistics($id)
+    {
+        $platform = Platform::where('id', $id)->first();
+
+        return $platform->statistic;
+    }
 }

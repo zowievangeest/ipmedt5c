@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
 
-    protected $with = ['game', 'platform', 'user'];
+    protected $with = ['statistics', 'game', 'platform', 'user'];
+
+    public function statistics()
+    {
+        return $this->hasOne('ipmedt5c\Statistic', 'id', 'statistic_id');
+    }
 
     public function game()
     {

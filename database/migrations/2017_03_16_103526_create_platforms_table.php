@@ -18,8 +18,10 @@ class CreatePlatformsTable extends Migration
             $table->string('name');
             $table->string('name_slug');
             $table->string('brand');
-//            $table->integer('statistics_id');
+            $table->integer('statistic_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('statistic_id')->references('id')->on('statistics')->onDelete('cascade');
         });
     }
 

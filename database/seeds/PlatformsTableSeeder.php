@@ -16,32 +16,38 @@ class PlatformsTableSeeder extends Seeder
                 [
                     'name' => 'PS4',
                     'name_slug' => str_slug('Playstation 4'),
-                    'brand' => 'Sony'
+                    'brand' => 'Sony',
+                    'statistic_id' => 17
                 ],
                 [
                     'name' => 'PS3',
                     'name_slug' => str_slug('Playstation 3'),
-                    'brand' => 'Sony'
+                    'brand' => 'Sony',
+                    'statistic_id' => 18
                 ],
                 [
                     'name' => 'Xbox One',
                     'name_slug' => str_slug('Xbox One'),
-                    'brand' => 'Microsoft'
+                    'brand' => 'Microsoft',
+                    'statistic_id' => 19
                 ],
                 [
                     'name' => 'Xbox 360',
                     'name_slug' => str_slug('Xbox 360'),
-                    'brand' => 'Microsoft'
+                    'brand' => 'Microsoft',
+                    'statistic_id' => 20
                 ],
                 [
                     'name' => 'Switch',
                     'name_slug' => str_slug('Nintendo Switch'),
-                    'brand' => 'Nintendo'
+                    'brand' => 'Nintendo',
+                    'statistic_id' => 21
                 ],
                 [
                     'name' => 'PC',
                     'name_slug' => str_slug('PC'),
-                    'brand' => 'Microsoft'
+                    'brand' => 'Microsoft',
+                    'statistic_id' => 22
                 ]
             ]
         );
