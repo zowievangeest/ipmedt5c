@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Platform extends Model
 {
-    protected $with = ['statistic'];
+    protected $with = ['statistics'];
 
-    public function statistic()
+    public function statistics()
     {
         return $this->hasOne('ipmedt5c\Statistic', 'id', 'statistic_id');
     }

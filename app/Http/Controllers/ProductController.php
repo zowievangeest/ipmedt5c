@@ -101,13 +101,15 @@ class ProductController extends Controller
     public function productsStatistics()
     {
         $products = Product::with('statistics')->get();
+//        $products = Product::with('statistics')->pluck('statistic')->pluck('id');
 
+//        return array_pluck($products, 'statistics');
         return $products;
     }
 
     public function productStatistics($id)
     {
-        $product = Product::find($id)->statistics()->first();
+        $product = Product::with('statistics')->find($id)->first();
 
         return $product;
     }

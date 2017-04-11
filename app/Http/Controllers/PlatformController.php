@@ -2,6 +2,7 @@
 
 namespace ipmedt5c\Http\Controllers;
 
+use Dingo\Api\Http\Response;
 use ipmedt5c\Platform;
 use Illuminate\Http\Request;
 
@@ -86,14 +87,15 @@ class PlatformController extends Controller
     public function platformsStatistics()
     {
         $platforms = Platform::with('statistic')->get();
+//        $platforms = Platform::with('statistic')->pluck('statistic')->toArray();
 
         return $platforms;
     }
 
     public function platformStatistics($id)
     {
-        $platform = Platform::where('id', $id)->first();
+        $platform = Platform::with('statistics')->where('id', $id)->first();
 
-        return $platform->statistic;
+        return $platform;
     }
 }
