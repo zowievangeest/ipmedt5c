@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use ipmedt5c\Events\BuyButtonEvent;
+use ipmedt5c\Events\NewScanGameEvent;
 use Vinkla\Pusher\Facades\Pusher;
 use \ipmedt5c\Events\ScanGameEvent;
 
@@ -47,6 +48,10 @@ $api->version('v1', function ($api)
 
     $api->get('rfid/{uid}', function($uid) {
         event(new ScanGameEvent($uid));
+    });
+
+    $api->get('rfid/new/{uid}', function($uid) {
+        event(new NewScanGameEvent($uid));
     });
 
     //koop button event

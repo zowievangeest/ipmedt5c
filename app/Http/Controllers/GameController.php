@@ -2,6 +2,7 @@
 
 namespace ipmedt5c\Http\Controllers;
 
+use Carbon\Carbon;
 use ipmedt5c\Game;
 use Illuminate\Http\Request;
 
@@ -85,7 +86,10 @@ class GameController extends Controller
 
     public function gamesStatistics()
     {
-        $games = Game::with('statistics')->get();
+        $games = Game::with(array('statistics' => function($query)
+        {
+//            $query->whereBetween('views.date', [Carbon::now()->subDay(7), Carbon::now()]);
+        }))->get();
 
         return $games;
     }
