@@ -2,6 +2,7 @@
 
 namespace ipmedt5c\Http\Controllers;
 
+use Carbon\Carbon;
 use ipmedt5c\Game;
 use Illuminate\Http\Request;
 
@@ -85,15 +86,15 @@ class GameController extends Controller
 
     public function gamesStatistics()
     {
-        $games = Game::with('statistic')->get();
+        $games = Game::with('statistics')->get();
 
         return $games;
     }
 
     public function gameStatistics($id)
     {
-        $game = Game::where('id', $id)->first();
+        $game = Game::with('statistics')->where('id', $id)->first();
 
-        return $game->statistic;
+        return $game;
     }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use ipmedt5c\Events\BuyButtonEvent;
+use ipmedt5c\Events\NewScanGameEvent;
 use Vinkla\Pusher\Facades\Pusher;
 use \ipmedt5c\Events\ScanGameEvent;
 
@@ -33,20 +34,24 @@ $api->version('v1', function ($api)
 
         $api->put('product/{id}/{tag_id}', ['as' => 'products', 'uses' => '\ipmedt5c\Http\Controllers\ProductController@edit']);
 
+        $api->resource('product',    \ipmedt5c\Http\Controllers\ProductController::class);
+
+        $api->get('statistics', ['as' => 'statistics', 'uses' => '\ipmedt5c\Http\Controllers\StatisticController@general']);
+        $api->get('statistics/platforms', ['as' => 'statistics.platforms', 'uses' => '\ipmedt5c\Http\Controllers\PlatformController@platformsStatistics']);
+        $api->get('statistics/platform/{id}', ['as' => 'statistics.platform', 'uses' => '\ipmedt5c\Http\Controllers\PlatformController@platformStatistics']);
+        $api->get('statistics/products', ['as' => 'statistics.products', 'uses' => '\ipmedt5c\Http\Controllers\ProductController@productsStatistics']);
+        $api->get('statistics/product/{id}', ['as' => 'statistics.product', 'uses' => '\ipmedt5c\Http\Controllers\ProductController@productStatistics']);
+        $api->get('statistics/games', ['as' => 'statistics.games', 'uses' => '\ipmedt5c\Http\Controllers\GameController@gamesStatistics']);
+        $api->get('statistics/game/{id}', ['as' => 'statistics.game', 'uses' => '\ipmedt5c\Http\Controllers\GameController@gameStatistics']);
+
     });
-
-    $api->resource('product',    \ipmedt5c\Http\Controllers\ProductController::class);
-
-    $api->get('statistics', ['as' => 'statistics', 'uses' => '\ipmedt5c\Http\Controllers\StatisticController@general']);
-    $api->get('statistics/platforms', ['as' => 'statistics.platforms', 'uses' => '\ipmedt5c\Http\Controllers\PlatformController@platformsStatistics']);
-    $api->get('statistics/platform/{id}', ['as' => 'statistics.platform', 'uses' => '\ipmedt5c\Http\Controllers\PlatformController@platformStatistics']);
-    $api->get('statistics/products', ['as' => 'statistics.products', 'uses' => '\ipmedt5c\Http\Controllers\ProductController@productsStatistics']);
-    $api->get('statistics/product/{id}', ['as' => 'statistics.product', 'uses' => '\ipmedt5c\Http\Controllers\ProductController@productStatistics']);
-    $api->get('statistics/games', ['as' => 'statistics.games', 'uses' => '\ipmedt5c\Http\Controllers\GameController@gamesStatistics']);
-    $api->get('statistics/game/{id}', ['as' => 'statistics.game', 'uses' => '\ipmedt5c\Http\Controllers\GameController@gameStatistics']);
 
     $api->get('rfid/{uid}', function($uid) {
         event(new ScanGameEvent($uid));
+    });
+
+    $api->get('rfid/new/{uid}', function($uid) {
+        event(new NewScanGameEvent($uid));
     });
 
     //koop button event

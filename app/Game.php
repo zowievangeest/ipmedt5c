@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Game extends Model
 {
 
-    protected $with = ['statistic', 'publisher', 'video', 'age_range', 'genres'];
+    protected $with = ['statistics', 'publisher', 'video', 'age_range', 'genres'];
 
-    public function statistic()
+    public function statistics()
     {
         return $this->hasOne('ipmedt5c\Statistic', 'id', 'statistic_id');
     }
