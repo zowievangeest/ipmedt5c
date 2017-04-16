@@ -46,6 +46,8 @@ $api->version('v1', function ($api)
 
     });
 
+    $api->post('import', ['as' => 'import', 'uses' => '\ipmedt5c\Http\Controllers\ImportController@import']);
+
     $api->get('rfid/{uid}', function($uid) {
         event(new ScanGameEvent($uid));
     });

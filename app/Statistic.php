@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class statistic extends Model
 {
+    public $fillable = ['type'];
     protected $with = ['views'];
 
     public function views()

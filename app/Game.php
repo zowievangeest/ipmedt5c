@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Game extends Model
 {
 
+    public $fillable = ['name', 'short_description', 'description', 'release_date', 'image_url', 'statistic_id', 'price', 'publisher_id', 'video_id', 'age_range_id'];
     protected $with = ['statistics', 'publisher', 'video', 'age_range', 'genres'];
 
     public function statistics()
