@@ -3,6 +3,7 @@
 namespace ipmedt5c\Http\Controllers;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use ipmedt5c\Product;
 use Illuminate\Http\Request;
 use ipmedt5c\View;
@@ -49,11 +50,32 @@ class ProductController extends Controller
     {
         $product = Product::where('tag_id', $tag_id)->first();
 
-        $view = new View;
-        $view->date = Carbon::now();
-        $view->save();
+//        $view = new View;
+//        $view->date = Carbon::now();
+//        $view->save();
 
-        $view->statistics()->attach($product->statistic);
+        $view = View::firstOrCreate([
+            'date' => Carbon::now(),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        $statistics_views = DB::table('statistics_views')->insert([
+            [
+                'statistic_id' => $product->statistic_id,
+                'view_id' => $view->id
+            ],
+            [
+                'statistic_id' => $product->platform->statistic_id,
+                'view_id' => $view->id
+            ],
+            [
+                'statistic_id' => $product->game->statistic_id,
+                'view_id' => $view->id
+            ]
+        ]);
+
+//        $view->statistics()->attach($product->statistic);
 
         return $product;
     }
