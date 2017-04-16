@@ -50,17 +50,15 @@ class ProductController extends Controller
     {
         $product = Product::where('tag_id', $tag_id)->first();
 
-//        $view = new View;
-//        $view->date = Carbon::now();
-//        $view->save();
+        $now = Carbon::now();
 
         $view = View::firstOrCreate([
-            'date' => Carbon::now(),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
+            'date' => $now,
+            'created_at' => $now,
+            'updated_at' => $now
         ]);
 
-        $statistics_views = DB::table('statistics_views')->insert([
+        DB::table('statistics_views')->insert([
             [
                 'statistic_id' => $product->statistic_id,
                 'view_id' => $view->id
@@ -74,8 +72,6 @@ class ProductController extends Controller
                 'view_id' => $view->id
             ]
         ]);
-
-//        $view->statistics()->attach($product->statistic);
 
         return $product;
     }
@@ -123,9 +119,7 @@ class ProductController extends Controller
     public function productsStatistics()
     {
         $products = Product::with('statistics')->get();
-//        $products = Product::with('statistics')->pluck('statistic')->pluck('id');
 
-//        return array_pluck($products, 'statistics');
         return $products;
     }
 

@@ -87,7 +87,6 @@ class PlatformController extends Controller
     public function platformsStatistics()
     {
         $platforms = Platform::with('statistics')->get();
-//        $platforms = Platform::with('statistic')->pluck('statistic')->toArray();
 
         return $platforms;
     }
