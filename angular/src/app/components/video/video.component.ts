@@ -7,11 +7,11 @@ import {pusher} from "../../interfaces/pusher.interface";
 import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-video',
+  templateUrl: './video.component.html',
+  styleUrls: ['./video.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class VideoComponent implements OnInit {
 
   public products: any;
   private uuid: string;

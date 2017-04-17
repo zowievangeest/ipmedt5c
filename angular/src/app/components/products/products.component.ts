@@ -10,8 +10,6 @@ declare const swal: any;
 export class ProductsComponent implements OnInit {
 
   public products: any;
-  private tag_id: string;
-  private product_id: number;
 
   constructor(private productService: ProductsService) { }
 
@@ -27,13 +25,6 @@ export class ProductsComponent implements OnInit {
     if ((event.target).value){
       this.productService.removeProductUid((event.target).value).subscribe(
           (res) => {
-            this.productService.getProducts().subscribe(
-                (res: any) => {
-                  this.products = res;
-                }
-            )
-          },
-          () => {
             this.productService.getProducts().subscribe(
                 (res: any) => {
                   this.products = res;

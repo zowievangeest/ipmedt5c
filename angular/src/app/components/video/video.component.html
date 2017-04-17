@@ -1,0 +1,32 @@
+<div class="container-fluid p-0 m-0">
+    <div class="row">
+        <div class="video-container">
+            <div class="video-content mx-auto">
+                <iframe width="1280" height="720" *ngIf="products" [src]="videoUrl()" frameborder="0"
+                        allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2 video-info text-white">
+            <div class="row">
+                <div class="col-lg-8 pl-5 pt-4">
+                    <p class="product-brand" *ngIf="products">{{ products['platform']['name'] }} / {{ products['platform']['brand'] }}</p>
+                    <p class="product-title" *ngIf="products">{{ products['game']['name']}}</p>
+                    <p class="product-pub-rel" *ngIf="products">Gepubliseerd door: {{ products['game']['publisher']['publisher'] }}</p>
+                    <p class="product-pub-rel" *ngIf="products">Release date: {{ products['game']['release_date']}}</p>
+                </div>
+                <div class="col-lg-2 my-auto">
+                    <img src="../../../assets/img/gamepad.svg" alt="" class="product-icon mx-auto d-block">
+                    <p class="product-icon-text text-center pt-3" *ngIf="products">{{ products['game']['genres'][0]['name']}}</p>
+                </div>
+                <div class="col-lg-2 my-auto">
+                    <img src="../../../assets/img/shopping-cart.svg" alt="" class="product-icon mx-auto d-block">
+                    <p class="product-icon-text text-center pt-3" *ngIf="products">&euro; {{ products['game']['price']}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

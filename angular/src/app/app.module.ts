@@ -19,6 +19,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { SweetAlertService } from 'ng2-sweetalert2';
 import { HomeComponent } from './components/home/home.component';
 import {ProductsService} from "./services/products/products.service";
+import {VideoComponent} from "./components/video/video.component";
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import {ProductsService} from "./services/products/products.service";
     MenuComponent,
     HeaderComponent,
     HomeComponent,
+    VideoComponent
   ],
   imports: [
     RoutingModule,

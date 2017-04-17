@@ -6,7 +6,8 @@
     </div>
     <div class="row my-5">
         <div class="col-md-4">
-            <h3 class="text-center">Chart 1</h3>
+            <h3 class="text-center">Chart 1 -- {{ total }}</h3>
+            <canvas *ngIf="pieChartData" baseChart="baseChart" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="chartType"></canvas>
         </div>
         <div class="col-md-4">
             <h3 class="text-center">Chart 2</h3>
