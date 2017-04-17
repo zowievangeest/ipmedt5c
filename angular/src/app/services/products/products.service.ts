@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, RequestOptions, Headers, Response} from "@angular/http";
 import {Observable} from "rxjs";
 import {url} from "../../../constants";
+import {LoginService} from "../login/login.service";
 
 @Injectable()
 export class ProductsService {
@@ -51,6 +52,24 @@ export class ProductsService {
           if (error.status == 401) {
             return Observable.throw(error.status);
           } else if (error.status == 500) {
+            return Observable.throw(error.status);
+          }
+        });
+  }
+
+  public removeProductUid(product_id: number): Observable<boolean | string> {
+    let uid = "null";
+    return this.http.put(`${url}product/${product_id}/${uid}`, null, this.getOptions)
+        .map((res: Response) => res.json())
+        .map((res: any) => {
+          return res;
+        })
+        .catch((error: any) => {
+          if (error.status == 401) {
+            return Observable.throw(error.status);
+          } else if (error.status == 500) {
+            return Observable.throw(error.status);
+          } else {
             return Observable.throw(error.status);
           }
         });

@@ -13,7 +13,7 @@ export class LoginService {
 
   private url: string = 'localhost';
 
-  private static headers(authentication: boolean = false, json: boolean = false): RequestOptions {
+  public static headers(authentication: boolean = false, json: boolean = false): RequestOptions {
 
     const headers = new Headers();
 

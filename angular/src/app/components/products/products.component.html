@@ -6,6 +6,8 @@
             <th>Naam</th>
             <th>Platform</th>
             <th>Prijs</th>
+            <th>Koppel</th>
+            <th>Ontkoppel</th>
         </tr>
         </thead>
         <tbody>
@@ -14,6 +16,8 @@
                 <td>{{ product.value["game"]["name"] }}</td>
                 <td>{{ product.value["platform"]["name"] }}</td>
                 <td>&euro; {{ product.value["game"]["price"] }}</td>
+                <td><button type="submit" class="btn btn-success">Koppel</button></td>
+                <td><button type="submit" class="btn btn-danger" [value]="product.value['id']" name="id" (click)="ontkoppel($event)">Ontkoppel</button></td>
             </tr>
         </tbody>
     </table>
