@@ -21,7 +21,7 @@ import { HomeComponent } from './components/home/home.component';
 import {ProductsService} from "./services/products/products.service";
 import {VideoComponent} from "./components/video/video.component";
 
-
+// Alle angular modules en component declaraties
 @NgModule({
   declarations: [
     AppComponent,

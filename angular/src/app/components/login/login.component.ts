@@ -3,6 +3,7 @@ import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {LoginService} from "../../services/login/login.service";
 import {LoginGuard} from "../../guards/login.guard";
 
+// sweetalert instantieren
 declare const swal: any;
 
 @Component({
@@ -12,40 +13,43 @@ declare const swal: any;
 })
 export class LoginComponent implements OnInit {
 
+  // variables
   public loginForm: FormGroup;
 
-  public msg: string;
 
-
+  // constructor
   constructor(private  formBuilder: FormBuilder,
               private loginService: LoginService,
               private loginGuard: LoginGuard) {
   }
 
+  // init functie
   ngOnInit() {
 
-
+    // login check
     if (LoginGuard.check()) {
       this.loginGuard.redirect();
     }
 
+    // login group
     this.loginForm = this.formBuilder.group({
       'email': [null, [Validators.required, Validators.email]],
       'password': [null, [Validators.required]]
     });
   }
 
+  // versturen formulier
   public submitForm(value: Object) {
 
+    // als die een response krijgt is die ingelogd
     this.loginService.login(value).subscribe(
         (res: any) => {
-
-          //TODO: route (dashboard)
           swal({
             title: "Succes!",
             text: "U bent nu ingelogd!",
             type: "success"
           });
+          // redirect
           this.loginGuard.redirect('/dashboard');
         },
         (err: number) => {

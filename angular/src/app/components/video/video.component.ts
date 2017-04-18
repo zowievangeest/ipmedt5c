@@ -13,6 +13,7 @@ import {ActivatedRoute, Params} from "@angular/router";
 })
 export class VideoComponent implements OnInit {
 
+  // variables
   public products: any;
   private uuid: string;
 
@@ -21,24 +22,32 @@ export class VideoComponent implements OnInit {
               private activatedRoute: ActivatedRoute) {
   }
 
+  // angular init
   ngOnInit() {
+    // parameters opvangen van uid
     this.activatedRoute.params.subscribe((params: Params) => {
       this.uuid = params['uuid'];
     });
 
+    // functie scangamepusher uitvoerne on init
     this.scanGamePusher();
   }
 
+  // game scannen
   private scanGamePusher(): void {
+    // kijken of het uuid beschikbaar is
     if (this.uuid) {
+      // product ophalen bij uuid
       this.productService.getProductByUid(this.uuid).subscribe(
           (res: any) => {
+            // return van producten
             this.products = res;
           });
     }
   }
 
   public videoUrl() {
+    // secrutiy bypassen voor youtube url - whitelisted url
     return this.domSanitizer.bypassSecurityTrustResourceUrl(`${this.products['game']['video']['url']}?autoplay=1`);
   }
 

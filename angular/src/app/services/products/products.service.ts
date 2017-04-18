@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {Http, RequestOptions, Headers, Response} from "@angular/http";
 import {Observable} from "rxjs";
 import {url} from "../../../constants";
-import {LoginService} from "../login/login.service";
 
 @Injectable()
 export class ProductsService {

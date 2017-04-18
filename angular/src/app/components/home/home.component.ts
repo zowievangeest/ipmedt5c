@@ -13,24 +13,32 @@ import {ActivatedRoute, Params} from "@angular/router";
 })
 export class HomeComponent implements OnInit {
 
+  // variables
   public products: any;
   private uuid: string;
 
+
+  // constructor
   constructor(private productService: ProductsService,
               private domSanitizer : DomSanitizer,
               private activatedRoute: ActivatedRoute) {
   }
 
+  // init functie
   ngOnInit() {
+    // uid meegeven indien actieve route
     this.activatedRoute.params.subscribe((params: Params) => {
       this.uuid = params['uuid'];
     });
 
+    // scan game
     this.scanGamePusher();
   }
 
+  // scan game redirect
   private scanGamePusher(): void {
     if (this.uuid) {
+      // suscriben aan een product die gescant is
       this.productService.getProductByUid(this.uuid).subscribe(
           (res: any) => {
             this.products = res;
@@ -38,7 +46,9 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  // video url ophalen
   public videoUrl() {
+    // returnen van gewhiteliste dmv bypass seceruity
     return this.domSanitizer.bypassSecurityTrustResourceUrl(`${this.products['game']['video']['url']}?autoplay=1`);
   }
 

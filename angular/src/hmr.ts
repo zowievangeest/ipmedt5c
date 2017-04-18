@@ -1,6 +1,7 @@
 import { NgModuleRef, ApplicationRef } from '@angular/core';
 import { createNewHosts } from '@angularclass/hmr';
 
+// hot run mode
 export const hmrBootstrap = (module: any, bootstrap: () => Promise<NgModuleRef<any>>) => {
     let ngModule: NgModuleRef<any>;
     module.hot.accept();

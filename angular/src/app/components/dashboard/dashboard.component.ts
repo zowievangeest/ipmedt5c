@@ -9,15 +9,19 @@ import {IntervalObservable} from "rxjs/observable/IntervalObservable";
 })
 export class DashboardComponent implements AfterViewInit {
 
+  // piechar variables
   public pieChartLabels: Array<string>;
   public pieChartData: Array<number>;
   public total: number = 0;
   public chartType: string = "pie";
   public title: string = "Acties";
 
+  // constructor
   constructor(private statisticsService: StatisticsService) { }
 
+  // data uit laravel
   private data(): void {
+    // data ophalen van statistics
     this.statisticsService.getPlatformViews().subscribe(
         (res: any) => {
 
@@ -40,6 +44,7 @@ export class DashboardComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.data();
 
+    // elke 5 seconden data verversen voor live data
     IntervalObservable.create(5000).subscribe(() => {
       this.data();
     });
