@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Genre extends Model
 {
+    public $fillable = ['name'];
 
     // One to many relation met games dmv een pivot table games_genres
     public function games()

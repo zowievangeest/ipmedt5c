@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    public $fillable = ['tag_id', 'statistic_id', 'game_id', 'platform_id', 'user_id'];
 
     // Aangeven welke modellen allemaal gelinkt is
     protected $with = ['statistics', 'game', 'platform', 'user'];

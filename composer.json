@@ -13,7 +13,8 @@
         "phpoffice/phpexcel": "^1.8",
         "pusher/pusher-php-server": "^2.6",
         "tymon/jwt-auth": "0.5.*",
-        "vinkla/pusher": "^2.5"
+        "vinkla/pusher": "^2.5",
+        "maatwebsite/excel": "~2.1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
