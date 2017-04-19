@@ -32,10 +32,11 @@ $api->version('v1', function ($api)
         $api->resource('publisher',    \ipmedt5c\Http\Controllers\PublisherController::class, $except);
         $api->resource('video',    \ipmedt5c\Http\Controllers\VideoController::class, $except);
 
-        $api->put('product/{id}/{tag_id}', ['as' => 'products', 'uses' => '\ipmedt5c\Http\Controllers\ProductController@edit']);
+
 
         $api->resource('product',    \ipmedt5c\Http\Controllers\ProductController::class);
 
+        //statistic routes
         $api->get('statistics', ['as' => 'statistics', 'uses' => '\ipmedt5c\Http\Controllers\StatisticController@general']);
         $api->get('statistics/platforms', ['as' => 'statistics.platforms', 'uses' => '\ipmedt5c\Http\Controllers\PlatformController@platformsStatistics']);
         $api->get('statistics/platform/{id}', ['as' => 'statistics.platform', 'uses' => '\ipmedt5c\Http\Controllers\PlatformController@platformStatistics']);
@@ -44,19 +45,25 @@ $api->version('v1', function ($api)
         $api->get('statistics/games', ['as' => 'statistics.games', 'uses' => '\ipmedt5c\Http\Controllers\GameController@gamesStatistics']);
         $api->get('statistics/game/{id}', ['as' => 'statistics.game', 'uses' => '\ipmedt5c\Http\Controllers\GameController@gameStatistics']);
 
+        //import route
+        $api->post('import', ['as' => 'import', 'uses' => '\ipmedt5c\Http\Controllers\ImportController@import']);
     });
 
-    $api->post('import', ['as' => 'import', 'uses' => '\ipmedt5c\Http\Controllers\ImportController@import']);
+    $api->put('productedit/{id}/{tag_id}', ['as' => 'products', 'uses' => '\ipmedt5c\Http\Controllers\ProductController@edit']);
 
+    //event routes
+
+    //scan game route
     $api->get('rfid/{uid}', function($uid) {
         event(new ScanGameEvent($uid));
     });
 
+    //new game event
     $api->get('rfid/new/{uid}', function($uid) {
         event(new NewScanGameEvent($uid));
     });
 
-    //koop button event
+    //buy button event
     $api->get('buy/{game_id}', function ($game_id) {
         event(new BuyButtonEvent($game_id));
     });

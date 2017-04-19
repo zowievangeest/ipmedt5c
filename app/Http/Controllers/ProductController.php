@@ -88,7 +88,11 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
 
-        $product->tag_id = $tag_id;
+        if ($tag_id == 0) {
+            $product->tag_id = null;
+        } else {
+            $product->tag_id = $tag_id;
+        }
 
         $product->save();
     }
