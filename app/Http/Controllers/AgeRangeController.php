@@ -14,6 +14,7 @@ class AgeRangeController extends Controller
      */
     public function index()
     {
+        // Return alle age_range data
         return Age_range::all();
     }
 

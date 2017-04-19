@@ -48,16 +48,21 @@ class ProductController extends Controller
      */
     public function show($tag_id)
     {
+
+        // Opzoeken van het product op basis van het tag-id
         $product = Product::where('tag_id', $tag_id)->first();
 
         $now = Carbon::now();
 
+
+        // Nieuwe view aanmaken als deze nog niet bestaat
         $view = View::firstOrCreate([
             'date' => $now,
             'created_at' => $now,
             'updated_at' => $now
         ]);
 
+        // Records voor het product/het platform/de game in de koppel-tabel plaatsen gekoppeld aan de aangemaakte view
         DB::table('statistics_views')->insert([
             [
                 'statistic_id' => $product->statistic_id,
@@ -86,14 +91,18 @@ class ProductController extends Controller
      */
     public function edit($id, $tag_id)
     {
+
+        //product zoeken op basis van het product-id
         $product = Product::find($id);
 
-        if ($tag_id == 0) {
-            $product->tag_id = null;
+        //Tag-id invoegen bij het product
+        if($tag_id == 'null') {
+            $product->tag_id = "";
         } else {
             $product->tag_id = $tag_id;
         }
 
+        //Product wijziging opslaan
         $product->save();
     }
 
@@ -120,6 +129,10 @@ class ProductController extends Controller
         //
     }
 
+
+    /*
+     * Statistieken van alle producten
+     */
     public function productsStatistics()
     {
         $products = Product::with('statistics')->get();
@@ -127,6 +140,10 @@ class ProductController extends Controller
         return $products;
     }
 
+    /*
+     * Statistieken van een specifiek product,
+     * met meegegeven product-id
+     */
     public function productStatistics($id)
     {
         $product = Product::with('statistics')->find($id)->first();

@@ -7,6 +7,7 @@ import {LoginComponent} from "../components/login/login.component";
 
 import {LoginGuard} from "../guards/login.guard";
 import {HomeComponent} from "../components/home/home.component";
+import {VideoComponent} from "../components/video/video.component";
 
 const routes: Routes = [
   {
@@ -38,6 +39,13 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: './dashboard.module#DashboardModule',
+    canActivate: [
+      LoginGuard
+    ],
+  },
+  {
+    path: 'video/:uuid',
+    component: VideoComponent,
     canActivate: [
       LoginGuard
     ]

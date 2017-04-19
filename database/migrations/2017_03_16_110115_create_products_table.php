@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
 
             $table->increments('id');
-            $table->string('tag_id')->unique()->index()->nullable();
+            $table->string('tag_id')->index()->nullable();
             $table->integer('statistic_id')->unsigned();
             $table->integer('game_id')->unsigned();
             $table->integer('platform_id')->unsigned();

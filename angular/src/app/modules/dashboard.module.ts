@@ -3,12 +3,15 @@ import { CommonModule } from '@angular/common';
 import {DashboardComponent} from "../components/dashboard/dashboard.component";
 import {RouterModule} from "@angular/router";
 import {ChartsModule} from "ng2-charts";
+import {StatisticsService} from "../services/statistics/statistics.service";
 
 @NgModule({
   declarations: [
       DashboardComponent
   ],
-  providers: [],
+  providers: [
+      StatisticsService
+  ],
   imports: [
     CommonModule,
     ChartsModule,

@@ -47,6 +47,7 @@ class GameController extends Controller
      */
     public function show(Game $game)
     {
+        // return game met meegegeven id
         return $game;
     }
 
@@ -84,6 +85,9 @@ class GameController extends Controller
         //
     }
 
+    /*
+     * Statistieken van alle games
+     */
     public function gamesStatistics()
     {
         $games = Game::with('statistics')->get();
@@ -91,6 +95,10 @@ class GameController extends Controller
         return $games;
     }
 
+    /*
+     * Statistieken van een specifieke game,
+     * met meegegeven game-id
+     */
     public function gameStatistics($id)
     {
         $game = Game::with('statistics')->where('id', $id)->first();

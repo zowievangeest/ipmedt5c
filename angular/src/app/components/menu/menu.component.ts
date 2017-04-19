@@ -10,12 +10,17 @@ import {LoginGuard} from "../../guards/login.guard";
 })
 export class MenuComponent implements OnInit {
 
+  // variables
   public loggedIn: boolean;
 
+  // constructor
   constructor(private loginService: LoginService, private router:Router) { }
 
+
+  // angular init
   ngOnInit() {
 
+    // check of de gebruiker ingrlogd is
     this.router.events.subscribe(() => {
       this.loggedIn = LoginGuard.check();
     });
@@ -23,6 +28,7 @@ export class MenuComponent implements OnInit {
     this.loggedIn = LoginGuard.check();
   }
 
+  // loguit functie
   public logout(): void {
     this.loginService.logout();
     this.loggedIn = false;

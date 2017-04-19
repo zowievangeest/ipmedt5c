@@ -56,4 +56,19 @@ export class ProductsService {
         });
   }
 
+  public removeProductUid(product_id: number): Observable<boolean | string> {
+    let uid = "null";
+    return this.http.put(`${url}product/${product_id}/${uid}`, null, this.getOptions)
+        .map((res: any) => {
+          return res;
+        })
+        .catch((error: any) => {
+          if (error.status == 401) {
+            return Observable.throw(error.status);
+          } else if (error.status == 500) {
+            return Observable.throw(error.status);
+          }
+        });
+  }
+
 }

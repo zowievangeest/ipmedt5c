@@ -22,8 +22,15 @@ $api = app(\Dingo\Api\Routing\Router::class);
 $api->version('v1', function ($api)
 {
     // API
+
     $api->group(['middleware' => ['api.auth', 'api']], function ($api)
     {
+
+        /*
+         * Alle routes waarvoor een authorization is verijst
+         * Hiervoor moet de JWT token uit de inlog worden meegegeven
+         */
+
         $except = ['except' => ['create', 'edit']];
         $api->resource('age_range', \ipmedt5c\Http\Controllers\AgeRangeController::class, $except);
         $api->resource('game',    \ipmedt5c\Http\Controllers\GameController::class, $except);
@@ -54,11 +61,16 @@ $api->version('v1', function ($api)
     //event routes
 
     //scan game route
+
+    // Event call wanneer er een rfid tag wordt gescant
+
     $api->get('rfid/{uid}', function($uid) {
         event(new ScanGameEvent($uid));
     });
-
+    
     //new game event
+
+    // Event call wanneer er een nieuwe rfid tag wordt gescant
     $api->get('rfid/new/{uid}', function($uid) {
         event(new NewScanGameEvent($uid));
     });

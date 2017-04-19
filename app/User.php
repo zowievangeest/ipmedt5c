@@ -15,6 +15,8 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    // Aangeven welke velden ingevuld kunnen worden
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -28,6 +30,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    // password automatisch laten hashen
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = Hash::make($password);

@@ -9,13 +9,17 @@ import {user} from "../../interfaces/user.interface";
 })
 export class ProfielComponent implements OnInit {
 
+  // variables
   private profiel: any;
   public user: user;
 
+  // constuctor
   constructor(private loginService: LoginService) {
   }
 
+  // on init angular
   ngOnInit() {
+    // kijken of de user is ingelogd en ophalen user info
     this.loginService.getUser().subscribe((res: boolean) => {
       this.profiel = res;
       this.user = JSON.parse(localStorage.getItem("user"));

@@ -13,6 +13,12 @@ class ExcelController extends Controller
         return view('importExport');
     }
 
+
+    /*
+     *  Check voor file vanuit input met naam "import_file"
+     *  Data uitlezen dmv
+     */
+
     public function importExcel(Request $request)
     {
         if ($request->hasFile('import_file')) {

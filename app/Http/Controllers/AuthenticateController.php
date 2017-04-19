@@ -32,9 +32,12 @@ class AuthenticateController extends Controller
     public function authenticateCheck()
     {
         try {
+            // Check if token exists
             if (! $user = JWTAuth::parseToken()->authenticate()) {
                 return response()->json(['user_not_found'], 404);
             }
+
+            // Check status of given token
         } catch (TokenExpiredException $e) {
             return response()->json(['token_expired'], $e->getStatusCode());
         } catch (TokenInvalidException $e) {
@@ -42,6 +45,7 @@ class AuthenticateController extends Controller
         } catch (JWTException $e) {
             return response()->json(['token_absent'], $e->getStatusCode());
         }
+        // Return user + data
         return response()->json(compact('user'));
     }
 }

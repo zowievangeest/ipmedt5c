@@ -1,3 +1,4 @@
+// interface voor users
 export interface user {
   "user": {
     "id": number,

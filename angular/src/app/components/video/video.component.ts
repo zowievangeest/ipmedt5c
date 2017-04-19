@@ -7,48 +7,47 @@ import {pusher} from "../../interfaces/pusher.interface";
 import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-video',
+  templateUrl: './video.component.html',
+  styleUrls: ['./video.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class VideoComponent implements OnInit {
 
   // variables
   public products: any;
   private uuid: string;
 
-
-  // constructor
   constructor(private productService: ProductsService,
               private domSanitizer : DomSanitizer,
               private activatedRoute: ActivatedRoute) {
   }
 
-  // init functie
+  // angular init
   ngOnInit() {
-    // uid meegeven indien actieve route
+    // parameters opvangen van uid
     this.activatedRoute.params.subscribe((params: Params) => {
       this.uuid = params['uuid'];
     });
 
-    // scan game
+    // functie scangamepusher uitvoerne on init
     this.scanGamePusher();
   }
 
-  // scan game redirect
+  // game scannen
   private scanGamePusher(): void {
+    // kijken of het uuid beschikbaar is
     if (this.uuid) {
-      // suscriben aan een product die gescant is
+      // product ophalen bij uuid
       this.productService.getProductByUid(this.uuid).subscribe(
           (res: any) => {
+            // return van producten
             this.products = res;
           });
     }
   }
 
-  // video url ophalen
   public videoUrl() {
-    // returnen van gewhiteliste dmv bypass seceruity
+    // secrutiy bypassen voor youtube url - whitelisted url
     return this.domSanitizer.bypassSecurityTrustResourceUrl(`${this.products['game']['video']['url']}?autoplay=1`);
   }
 
