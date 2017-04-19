@@ -199,7 +199,7 @@ return [
         Vinkla\Pusher\PusherServiceProvider::class,
 
         /*
-         * Maatwebsite
+         * Maatwebsite excel provider
          */
         Maatwebsite\Excel\ExcelServiceProvider::class
 

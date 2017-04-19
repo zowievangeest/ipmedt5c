@@ -10,6 +10,8 @@ class ProductsTableSeeder extends Seeder
      *
      * @return void
      */
+
+    // seeder voor de products tabel
     public function run()
     {
         DB::table('products')->insert(

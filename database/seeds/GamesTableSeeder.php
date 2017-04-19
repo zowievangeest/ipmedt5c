@@ -10,6 +10,8 @@ class GamesTableSeeder extends Seeder
      *
      * @return void
      */
+
+    // seeder voor de games tabel
     public function run()
     {
         DB::table('games')->insert(

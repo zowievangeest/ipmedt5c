@@ -9,6 +9,8 @@ class PlatformsTableSeeder extends Seeder
      *
      * @return void
      */
+
+    // seeder voor de platforms tabel
     public function run()
     {
         DB::table('platforms')->insert(

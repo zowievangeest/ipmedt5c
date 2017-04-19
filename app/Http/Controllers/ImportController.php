@@ -16,6 +16,18 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ImportController extends Controller
 {
+
+
+    /*
+     *  Check voor file vanuit input met naam "import_file"
+     *  Excel data uitlezen
+     *  Checken of er data aanwezig is
+     *  voor elke waarde in de row wordt er gekeken of deze waarde al bestaat
+     *  zo niet wordt de waarde toegevoegd aan de database
+     *  bestaat deze wel wordt het betreffende id opgeslagen
+     *  zo ontstaat er nooit dubbele data
+     */
+
     public function import(Request $request)
     {
         if ($request->hasFile('import_file')) {
@@ -68,6 +80,7 @@ class ImportController extends Controller
                             $genres = explode(',', $v['genres']);
                             $genre_ids = [];
 
+                            // voor elke genre wordt er een firstOrCreate uitgevoerd
                             for($x = 0; $x < count($genres); $x++) {
                                 $genre = Genre::firstOrCreate([
                                     "name" => $genres[$x]
@@ -76,7 +89,7 @@ class ImportController extends Controller
                                 array_push($genre_ids, $genre->id);
                             }
 
-
+                            // de game wordt toegevoegd aan de database
                             $game = Game::firstOrCreate([
                                 "name" => $v['game_name'],
                                 "short_description" => $v['short_description'],
@@ -100,7 +113,7 @@ class ImportController extends Controller
                                 ]);
                             }
 
-
+                            // Het product wordt toegevoegd aan de database
                             Product::firstOrCreate([
                                 "statistic_id" => $statistics_ids[2],
                                 "game_id" => $game->id,
@@ -111,10 +124,11 @@ class ImportController extends Controller
                         }
                     }
                 }
-
+                // bericht succesvol wordt teruggegeven
                 return back()->with('success', 'Succesvol toegevoegd');
             }
         }
+        // bericht error wordt teruggegeven
         return back()->with('error', 'Er ging iets fout');
     }
 }

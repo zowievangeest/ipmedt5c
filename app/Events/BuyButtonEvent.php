@@ -24,6 +24,8 @@ class BuyButtonEvent implements ShouldBroadcast
      */
     public function __construct($game_id)
     {
+        // aan het push bericht wordt het game_id en de tijd +2 uur vanwegen het tijdsverschil meegegeven
+
         $this->game_id = $game_id;
         $this->time = Carbon::now()->addHours(2)->toTimeString();
     }
@@ -35,11 +37,13 @@ class BuyButtonEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
+        // channel waar op kan worden geabboneerd om de broadcast messages te ontvangen
         return ['buy-game'];
     }
 
     public function broadcastAs()
     {
+        // message die wordt gebroadcast wanneer er een event wordt gegenereerd
         return 'game.buy';
     }
 }

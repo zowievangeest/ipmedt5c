@@ -9,6 +9,8 @@ class Games_genresTableSeeder extends Seeder
      *
      * @return void
      */
+
+    // seeder voor de games_genres tabel
     public function run()
     {
         DB::table('games_genres')->insert(

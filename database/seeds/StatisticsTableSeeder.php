@@ -10,6 +10,8 @@ class StatisticsTableSeeder extends Seeder
      *
      * @return void
      */
+
+    // seeder voor de statistics tabel
     public function run()
     {
         DB::table('statistics')->insert(

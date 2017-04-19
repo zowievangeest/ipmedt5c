@@ -13,6 +13,8 @@
 
 use Illuminate\Support\Facades\App;
 
+// bij elke non-api request wordt index.html gereturnet
+
 Route::get('{any}', function () {
     return File::get(public_path('index.html'));
 })->where('any', '.*');

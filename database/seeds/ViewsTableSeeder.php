@@ -10,6 +10,8 @@ class ViewsTableSeeder extends Seeder
      *
      * @return void
      */
+
+    // seeder voor de views tabel
     public function run()
     {
         DB::table('views')->insert(

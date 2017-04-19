@@ -9,6 +9,8 @@ class PublishersTableSeeder extends Seeder
      *
      * @return void
      */
+
+    // seeder voor de publishers tabel
     public function run()
     {
         DB::table('publishers')->insert(

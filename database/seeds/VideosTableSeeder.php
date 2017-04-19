@@ -9,6 +9,8 @@ class VideosTableSeeder extends Seeder
      *
      * @return void
      */
+
+    // seeder voor de video tabel
     public function run()
     {
         DB::table('videos')->insert(

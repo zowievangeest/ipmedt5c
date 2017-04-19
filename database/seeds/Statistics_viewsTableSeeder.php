@@ -9,6 +9,8 @@ class Statistics_viewsTableSeeder extends Seeder
      *
      * @return void
      */
+
+    // seeder voor de statistics_views koppel-tabel
     public function run()
     {
         DB::table('statistics_views')->insert(

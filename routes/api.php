@@ -39,7 +39,7 @@ $api->version('v1', function ($api)
         $api->resource('publisher',    \ipmedt5c\Http\Controllers\PublisherController::class, $except);
         $api->resource('video',    \ipmedt5c\Http\Controllers\VideoController::class, $except);
 
-
+        $api->put('productedit/{id}/{tag_id}', ['as' => 'products', 'uses' => '\ipmedt5c\Http\Controllers\ProductController@edit']);
 
         $api->resource('product',    \ipmedt5c\Http\Controllers\ProductController::class);
 
@@ -56,19 +56,11 @@ $api->version('v1', function ($api)
         $api->post('import', ['as' => 'import', 'uses' => '\ipmedt5c\Http\Controllers\ImportController@import']);
     });
 
-    $api->put('productedit/{id}/{tag_id}', ['as' => 'products', 'uses' => '\ipmedt5c\Http\Controllers\ProductController@edit']);
-
-    //event routes
-
-    //scan game route
-
     // Event call wanneer er een rfid tag wordt gescant
 
     $api->get('rfid/{uid}', function($uid) {
         event(new ScanGameEvent($uid));
     });
-    
-    //new game event
 
     // Event call wanneer er een nieuwe rfid tag wordt gescant
     $api->get('rfid/new/{uid}', function($uid) {

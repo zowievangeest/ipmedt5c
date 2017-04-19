@@ -23,6 +23,9 @@ class ScanGameEvent implements ShouldBroadcast
      */
     public function __construct($uid)
     {
+
+        // aan het push bericht wordt het uid meegegeven
+
         $this->uid = $uid;
     }
 
@@ -33,11 +36,13 @@ class ScanGameEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
+        // channel waar op kan worden geabboneerd om de broadcast messages te ontvangen
         return ['scan-game'];
     }
 
     public function broadcastAs()
     {
+        // message die wordt gebroadcast wanneer er een event wordt gegenereerd
         return 'game.scanned';
     }
 }

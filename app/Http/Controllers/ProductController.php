@@ -84,6 +84,8 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+     * Om een uid te koppelen en te ontkoppelen
+     *
      * @param $id
      * @param $tag_id
      * @return \Illuminate\Http\Response

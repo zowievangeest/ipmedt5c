@@ -12,6 +12,8 @@ class UsersTableSeeder extends Seeder
      *
      * @return void
      */
+
+    // seeder voor de user tabel
     public function run()
     {
         User::insert([

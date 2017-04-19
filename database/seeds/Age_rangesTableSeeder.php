@@ -9,6 +9,8 @@ class Age_rangesTableSeeder extends Seeder
      *
      * @return void
      */
+
+    // seeder voor de age_range tabel
     public function run()
     {
         DB::table('age_ranges')->insert(
