@@ -8,6 +8,7 @@ class statistic extends Model
 {
     protected $with = ['views'];
 
+    // One to many relation met view dmv een pivot table
     public function views()
     {
         return $this->belongsToMany('ipmedt5c\View', 'statistics_views', 'statistic_id', 'view_id');

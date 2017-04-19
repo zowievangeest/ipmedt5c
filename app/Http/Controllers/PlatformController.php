@@ -84,6 +84,9 @@ class PlatformController extends Controller
         //
     }
 
+    /*
+     * Statistieken van alle platformen
+     */
     public function platformsStatistics()
     {
         $platforms = Platform::with('statistics')->get();
@@ -91,6 +94,10 @@ class PlatformController extends Controller
         return $platforms;
     }
 
+    /*
+     * Statistieken van een specifiek platform,
+     * met meegegeven platform-id
+     */
     public function platformStatistics($id)
     {
         $platform = Platform::with('statistics')->where('id', $id)->first();

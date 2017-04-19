@@ -87,6 +87,9 @@ class StatisticController extends Controller
     }
 
 
+    /*
+     * Alle views returnen tot 7 dagen terug
+     */
     public function general()
     {
         return View::whereBetween('date', [Carbon::now()->subDay(7), Carbon::now()])->get();
