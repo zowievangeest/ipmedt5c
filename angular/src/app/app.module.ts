@@ -16,7 +16,6 @@ import {LoginGuard} from "./guards/login.guard";
 import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './components/header/header.component';
 
-import { SweetAlertService } from 'ng2-sweetalert2';
 import { HomeComponent } from './components/home/home.component';
 import {ProductsService} from "./services/products/products.service";
 import {VideoComponent} from "./components/video/video.component";
@@ -44,7 +43,6 @@ import {VideoComponent} from "./components/video/video.component";
   providers: [
     LoginService,
     LoginGuard,
-    SweetAlertService,
     ProductsService
   ],
   bootstrap: [AppComponent]
