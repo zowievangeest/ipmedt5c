@@ -51,7 +51,7 @@ $api->version('v1', function ($api)
         $api->get('statistics/game/{id}', ['as' => 'statistics.game', 'uses' => '\ipmedt5c\Http\Controllers\GameController@gameStatistics']);
 
         //import route
-        $api->post('import', ['as' => 'import', 'uses' => '\ipmedt5c\Http\Controllers\ImportController@import']);
+        $api->post('product/import', ['as' => 'import', 'uses' => '\ipmedt5c\Http\Controllers\ImportController@import']);
     });
 
     $api->put('productedit/{product}/{tag_id}', ['as' => 'products', 'uses' => '\ipmedt5c\Http\Controllers\ProductController@update']);

@@ -124,11 +124,15 @@ class ImportController extends Controller
                         }
                     }
                 }
+                //notification aanmaken
+
                 // bericht succesvol wordt teruggegeven
-                return back()->with('success', 'Succesvol toegevoegd');
+                return ['success' => 'De producten zijn toegevoegd'];
             }
         }
+        //notification aanmaken
+
         // bericht error wordt teruggegeven
-        return back()->with('error', 'Er ging iets fout');
+        return ['error' => 'Er ging iets mis'];
     }
 }
