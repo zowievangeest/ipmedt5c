@@ -31,17 +31,15 @@ $api->version('v1', function ($api)
          * Hiervoor moet de JWT token uit de inlog worden meegegeven
          */
 
-        $except = ['except' => ['create', 'edit']];
+        $except = ['except' => ['update']];
         $api->resource('age_range', \ipmedt5c\Http\Controllers\AgeRangeController::class, $except);
         $api->resource('game',    \ipmedt5c\Http\Controllers\GameController::class, $except);
         $api->resource('genre',    \ipmedt5c\Http\Controllers\GenreController::class, $except);
         $api->resource('platform',    \ipmedt5c\Http\Controllers\PlatformController::class, $except);
         $api->resource('publisher',    \ipmedt5c\Http\Controllers\PublisherController::class, $except);
         $api->resource('video',    \ipmedt5c\Http\Controllers\VideoController::class, $except);
+        $api->resource('product',    \ipmedt5c\Http\Controllers\ProductController::class, $except);
 
-        $api->put('productedit/{id}/{tag_id}', ['as' => 'products', 'uses' => '\ipmedt5c\Http\Controllers\ProductController@edit']);
-
-        $api->resource('product',    \ipmedt5c\Http\Controllers\ProductController::class);
 
         //statistic routes
         $api->get('statistics', ['as' => 'statistics', 'uses' => '\ipmedt5c\Http\Controllers\StatisticController@general']);
@@ -55,6 +53,8 @@ $api->version('v1', function ($api)
         //import route
         $api->post('import', ['as' => 'import', 'uses' => '\ipmedt5c\Http\Controllers\ImportController@import']);
     });
+
+    $api->put('productedit/{product}/{tag_id}', ['as' => 'products', 'uses' => '\ipmedt5c\Http\Controllers\ProductController@update']);
 
     // Event call wanneer er een rfid tag wordt gescant
 

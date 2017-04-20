@@ -1,0 +1,9 @@
+@import "../../../styles";
+
+.btn-download {
+  color: $white;
+  background: $brand-primary;
+  &:hover {
+    color: $white;
+  }
+}

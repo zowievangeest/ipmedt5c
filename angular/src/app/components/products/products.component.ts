@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductsService} from "../../services/products/products.service";
 declare const swal: any;
 
@@ -12,8 +12,11 @@ export class ProductsComponent implements OnInit {
   // variables
   public products: any;
 
+  public file: Array<File>;
+
   // constructor
-  constructor(private productService: ProductsService) { }
+  constructor(private productService: ProductsService,) {
+  }
 
   // angular init
   ngOnInit() {
@@ -28,7 +31,7 @@ export class ProductsComponent implements OnInit {
   // ontkoppel functie voor het ontkoppelen van de producten
   public ontkoppel(event): void {
     // kijken of de target een value heeft
-    if ((event.target).value){
+    if ((event.target).value) {
       // verwijderen uidd
       this.productService.removeProductUid((event.target).value).subscribe(
           (res) => {
@@ -41,6 +44,24 @@ export class ProductsComponent implements OnInit {
           }
       );
     }
+  }
+
+  public upload(): void {
+    if (this.file) {
+      const formData = new FormData();
+
+      formData.append('file', this.file[0], this.file[0].name);
+
+      this.productService.uploadFile(formData).subscribe(
+          (res: any) => {
+            console.log(res);
+          }
+      )
+    }
+  }
+
+  public fileChangeEvent(event) {
+    this.file = event.target.files;
   }
 
 }

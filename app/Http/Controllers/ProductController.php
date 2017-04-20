@@ -91,21 +91,9 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      * @internal param Product $product
      */
-    public function edit($id, $tag_id)
+    public function edit()
     {
 
-        //product zoeken op basis van het product-id
-        $product = Product::find($id);
-
-        //Tag-id invoegen bij het product
-        if($tag_id == 'null') {
-            $product->tag_id = "";
-        } else {
-            $product->tag_id = $tag_id;
-        }
-
-        //Product wijziging opslaan
-        $product->save();
     }
 
     /**
@@ -115,9 +103,17 @@ class ProductController extends Controller
      * @param  \ipmedt5c\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Product $product, $tag_id)
     {
-        //
+        //Tag-id invoegen bij het product
+        if($tag_id == 'null') {
+            $product->tag_id = "";
+        } else {
+            $product->tag_id = $tag_id;
+        }
+
+        //Product wijziging opslaan
+        $product->save();
     }
 
     /**

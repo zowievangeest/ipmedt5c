@@ -1,25 +1,36 @@
 <div class="container">
-    <table class="table my-5">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Naam</th>
-            <th>Platform</th>
-            <th>Prijs</th>
-            <th>Koppel</th>
-            <th>Ontkoppel</th>
-        </tr>
-        </thead>
-        <tbody>
+    <div class="col-md-12">
+        <h3 class="my-5">Producten</h3>
+        <table class="table my-5">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Naam</th>
+                <th>Platform</th>
+                <th>Prijs</th>
+                <th>Koppel</th>
+                <!--<th>Ontkoppel</th>-->
+            </tr>
+            </thead>
+            <tbody>
             <tr *ngFor="let product of products | keys">
                 <td>{{ product.value["tag_id"] }}</td>
                 <td>{{ product.value["game"]["name"] }}</td>
                 <td>{{ product.value["platform"]["name"] }}</td>
                 <td>&euro; {{ product.value["game"]["price"] }}</td>
-                <td><button type="submit" class="btn btn-success">Koppel</button></td>
-                <td><button type="submit" class="btn btn-danger" [value]="product.value['id']" name="id" (click)="ontkoppel($event)">Ontkoppel</button></td>
+                <td><button type="submit" class="btn btn-success btn-block">Koppel</button></td>
+                <!--<td><button type="submit" class="btn btn-danger" [value]="product.value['id']" name="id" (click)="ontkoppel($event)">Ontkoppel</button></td>-->
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <div class="col-md-12">
+        <h3 class="my-5">Importeer Producten</h3>
+        <p>Select een bestand en upload de excel lijst</p>
+        <input type="file" (change)="fileChangeEvent($event)" name="import_file"/>
+        <p class="mt-5">Download hier een voorbeeld lijst <a  class="btn btn-download" href="../../../assets/excel/excel-template.xlsx">Klik hier om te downloaden</a> </p>
+        <button class="btn btn-lg btn-success" (click)="upload()">Upload lijst</button>
+    </div>
 </div>
 

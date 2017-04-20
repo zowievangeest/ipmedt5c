@@ -58,7 +58,7 @@ export class ProductsService {
 
   public removeProductUid(product_id: number): Observable<boolean | string> {
     let uid = "null";
-    return this.http.put(`${url}product/${product_id}/${uid}`, null, this.getOptions)
+    return this.http.put(`${url}productedit/${product_id}/${uid}`, null, this.getOptions)
         .map((res: any) => {
           return res;
         })
@@ -70,5 +70,15 @@ export class ProductsService {
           }
         });
   }
+
+  public uploadFile(data: FormData): Observable<boolean | string> {
+    return this.http.post(`${url}import/`, data, this.getOptions)
+        .map((res: Response) => res.json())
+        .map((res: any) => {
+          return res;
+        });
+  }
+
+
 
 }

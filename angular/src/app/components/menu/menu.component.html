@@ -7,8 +7,9 @@
     </a>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
         <div class="navbar-nav">
+            <a class="nav-item nav-link" routerLink="/home" *ngIf="loggedIn">Home</a>
             <a class="nav-item nav-link" routerLink="/dashboard" *ngIf="loggedIn">Dashboard <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" routerLink="/product" *ngIf="loggedIn">Product</a>
+            <a class="nav-item nav-link" routerLink="/product" *ngIf="loggedIn">Products</a>
             <a class="nav-item nav-link" routerLink="/profiel" *ngIf="loggedIn">Profiel</a>
             <a class="nav-item nav-link" routerLink="/login" *ngIf="!loggedIn">Inloggen</a>
             <a class="nav-item nav-link" (click)="logout()" *ngIf="loggedIn">Uitloggen</a>
