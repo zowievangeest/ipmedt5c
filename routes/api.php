@@ -41,6 +41,8 @@ $api->version('v1', function ($api)
         $api->resource('product',    \ipmedt5c\Http\Controllers\ProductController::class, $except);
 
 
+        $api->put('productedit/{product}/{tag_id}', ['as' => 'products', 'uses' => '\ipmedt5c\Http\Controllers\ProductController@update']);
+
         //statistic routes
         $api->get('statistics', ['as' => 'statistics', 'uses' => '\ipmedt5c\Http\Controllers\StatisticController@general']);
         $api->get('statistics/platforms', ['as' => 'statistics.platforms', 'uses' => '\ipmedt5c\Http\Controllers\PlatformController@platformsStatistics']);
@@ -54,7 +56,6 @@ $api->version('v1', function ($api)
         $api->post('product/import', ['as' => 'import', 'uses' => '\ipmedt5c\Http\Controllers\ImportController@import']);
     });
 
-    $api->put('productedit/{product}/{tag_id}', ['as' => 'products', 'uses' => '\ipmedt5c\Http\Controllers\ProductController@update']);
 
     // Event call wanneer er een rfid tag wordt gescant
 
