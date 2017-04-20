@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
 
             $table->increments('id');
             $table->string('tag_id')->index()->nullable();
-            $table->integer('statistic_id')->unsigned();
+            $table->integer('statistic_id')->unsigned()->nullable();
             $table->integer('game_id')->unsigned();
             $table->integer('platform_id')->unsigned();
             $table->integer('user_id')->unsigned()->nullable();
