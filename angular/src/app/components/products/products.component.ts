@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductsService} from "../../services/products/products.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 declare const swal: any;
 
 @Component({
@@ -15,7 +16,8 @@ export class ProductsComponent implements OnInit {
   public file: Array<File>;
 
   // constructor
-  constructor(private productService: ProductsService,) {
+  constructor(private productService: ProductsService,
+              private modalService : NgbModal) {
   }
 
   // angular init
@@ -50,18 +52,29 @@ export class ProductsComponent implements OnInit {
     if (this.file) {
       const formData = new FormData();
 
-      formData.append('file', this.file[0], this.file[0].name);
+      formData.append('import_file', this.file[0], this.file[0].name);
+
+      console.log(formData);
 
       this.productService.uploadFile(formData).subscribe(
           (res: any) => {
-            console.log(res);
+            this.productService.getProducts().subscribe(
+                (res: any) => {
+                  this.products = res;
+                }
+            )
           }
       )
     }
   }
 
-  public fileChangeEvent(event) {
+  public fileChangeEvent(event): void {
     this.file = event.target.files;
+  }
+
+  public open(content, event): void {
+    console.log((event.target).value);
+    this.modalService.open(content);
   }
 
 }

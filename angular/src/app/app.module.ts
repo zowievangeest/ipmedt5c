@@ -19,6 +19,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import {ProductsService} from "./services/products/products.service";
 import {VideoComponent} from "./components/video/video.component";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 // Alle angular modules en component declaraties
 @NgModule({
@@ -38,7 +39,8 @@ import {VideoComponent} from "./components/video/video.component";
     ReactiveFormsModule,
     HttpModule,
     ToastModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgbModule.forRoot()
   ],
   providers: [
     LoginService,

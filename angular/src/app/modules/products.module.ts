@@ -4,6 +4,7 @@ import {ProductsService} from "../services/products/products.service";
 import {RouterModule} from "@angular/router";
 import { CommonModule } from '@angular/common';
 import {KeysPipe} from "../pipes/keys.pipe";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {KeysPipe} from "../pipes/keys.pipe";
   ],
   imports: [
     CommonModule,
+    NgbModule,
     RouterModule.forChild([
       {
         path: '',

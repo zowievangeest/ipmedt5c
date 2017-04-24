@@ -1,7 +1,7 @@
 <div class="container">
     <div class="col-md-12">
         <h3 class="my-5">Producten</h3>
-        <table class="table my-5">
+        <table class="table mt-5">
             <thead>
             <tr>
                 <th>ID</th>
@@ -9,7 +9,6 @@
                 <th>Platform</th>
                 <th>Prijs</th>
                 <th>Koppel</th>
-                <!--<th>Ontkoppel</th>-->
             </tr>
             </thead>
             <tbody>
@@ -18,13 +17,26 @@
                 <td>{{ product.value["game"]["name"] }}</td>
                 <td>{{ product.value["platform"]["name"] }}</td>
                 <td>&euro; {{ product.value["game"]["price"] }}</td>
-                <td><button type="submit" class="btn btn-success btn-block">Koppel</button></td>
-                <!--<td><button type="submit" class="btn btn-danger" [value]="product.value['id']" name="id" (click)="ontkoppel($event)">Ontkoppel</button></td>-->
+                <td><button type="submit" class="btn btn-success btn-block" [value]="product.value['id']" (click)="open(content, $event)">Koppel</button></td>
             </tr>
             </tbody>
         </table>
+        <template #content let-c="close" let-d="dismiss">
+            <div class="modal-header">
+                <h4 class="modal-title">Modal title</h4>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>One fine body&hellip;</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+            </div>
+        </template>
     </div>
-    <hr>
+    <hr class="mt-5">
     <div class="col-md-12">
         <h3 class="my-5">Importeer Producten</h3>
         <p>Select een bestand en upload de excel lijst</p>
