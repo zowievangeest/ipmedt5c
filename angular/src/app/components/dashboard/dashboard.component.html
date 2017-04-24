@@ -10,21 +10,21 @@
             <p>Hieronder vind je het totaal aantal gescande games per platform.</p>
             <canvas *ngIf="chart1_pieChartData" baseChart [data]="chart1_pieChartData" [labels]="chart1_pieChartLabels" [chartType]="chart1_chartType"></canvas>
             <h5 class="text-uppercase">Totaal gescande games:</h5>
-            <h3 *ngIf="chart1_pieChartLabels">{{ chart1_pieChartLabels.length }}</h3>
+            <h3 *ngIf="chart1_pieChartLabels" counto [step]="100" [countTo]="chart1_pieChartLabels.length" [countFrom]="0" [duration]="2" (countoChange)="counto = $event">{{ counto | number: '1.0-0' }}</h3>
         </div>
         <div class="col-md-4">
             <h3 class="text-center">{{ chart2_title }}</h3>
             <p>Hieronder vind je het totaal aantal gescande games per platform.</p>
             <canvas *ngIf="chart2_barChartData" baseChart width="400" height="400" [datasets]="chart2_barChartData" [labels]="chart2_barChartLabels" [chartType]="chart2_chartType" [options]="barChartOptions"></canvas>
             <h5 class="text-uppercase">Totaal gescande games:</h5>
-            <h3 *ngIf="chart2_barChartLabels">{{ chart2_barChartLabels.length }}</h3>
+            <h3 *ngIf="chart2_barChartLabels" counto [step]="100" [countTo]="chart2_barChartLabels.length" [countFrom]="0" [duration]="2" (countoChange)="counto2 = $event">{{ counto2 | number: '1.0-0' }}</h3>
         </div>
         <div class="col-md-4">
             <h3 class="text-center">{{ chart3_title }}</h3>
             <p>Hieronder vind je het totaal aantal gescande games per platform.</p>
             <canvas *ngIf="chart3_lineChartData" baseChart width="400" height="400" [datasets]="chart3_lineChartData" [labels]="chart3_lineChartLabels" [chartType]="chart3_chartType"></canvas>
             <h5 class="text-uppercase">Totaal gescande games:</h5>
-            <h3>{{ chart1_total }}</h3>
+            <h3 counto [step]="100" [countTo]="chart1_total" [countFrom]="0" [duration]="2" (countoChange)="counto3 = $event">{{ counto3 | number: '1.0-0'}}</h3>
         </div>
     </div>
 </div>
