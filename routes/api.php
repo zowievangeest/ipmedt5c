@@ -19,7 +19,7 @@ use \ipmedt5c\Events\ScanGameEvent;
 
 $api = app(\Dingo\Api\Routing\Router::class);
 
-$api->version('v1', function ($api)
+$api->version('v1', ['middleware' => 'api.throttle', 'limit' => 10000, 'expires' => 5], function ($api)
 {
     // API
 

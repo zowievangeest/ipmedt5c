@@ -122,9 +122,9 @@ export class DashboardComponent implements AfterViewInit {
 
     // elke 5 seconden data verversen voor live data
     IntervalObservable.create(5000).subscribe(() => {
-      this.chart_1_data();
-      this.chart_2_data();
-      this.chart_3_data();
+      // this.chart_1_data();
+      // this.chart_2_data();
+      // this.chart_3_data();
     });
   }
 
