@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, RequestOptions, Headers, Response} from "@angular/http";
 import {Observable} from "rxjs";
 import {url} from "../../../constants";
+declare const swal: any;
 
 @Injectable()
 export class ProductsService {
@@ -56,16 +57,18 @@ export class ProductsService {
         });
   }
 
-  public removeProductUid(product_id: number): Observable<boolean | string> {
-    let uid = "null";
+  public addProductUid(product_id: number, uid: string): Observable<boolean | string> {
     return this.http.put(`${url}productedit/${product_id}/${uid}`, null, this.getOptions)
         .map((res: any) => {
+          swal("Gelukt!", "Het product is gekoppeld", "success");
           return res;
         })
         .catch((error: any) => {
           if (error.status == 401) {
+            swal("Oops!", "Het product is niet gekoppeld", "error");
             return Observable.throw(error.status);
           } else if (error.status == 500) {
+            swal("Oops!", "Het product is niet gekoppeld", "error");
             return Observable.throw(error.status);
           }
         });
