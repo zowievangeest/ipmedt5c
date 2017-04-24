@@ -5,6 +5,7 @@ namespace ipmedt5c\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use ipmedt5c\Age_range;
+use ipmedt5c\Events\NotificationEvent;
 use ipmedt5c\Game;
 use ipmedt5c\Genre;
 use ipmedt5c\Platform;
@@ -28,6 +29,10 @@ class ImportController extends Controller
      *  zo ontstaat er nooit dubbele data
      */
 
+    /**
+     * @param Request $request
+     * @return array
+     */
     public function import(Request $request)
     {
         if ($request->hasFile('import_file')) {
@@ -51,24 +56,17 @@ class ImportController extends Controller
                             ]);
 
 
-                            $statistics_ids = [];
-                            $statistic_types = ['platform', 'game', 'product'];
-
-                            for ($x = 0; $x < count($statistic_types); $x++) {
-                                $statistic = statistic::create([
-                                    "type" => $statistic_types[$x]
-                                ]);
-
-                                array_push($statistics_ids, $statistic->id);
-                            }
-
-
                             $platform = Platform::firstOrCreate([
                                 "name" => $v['platform'],
                                 "name_slug" => str_slug($v['platform']),
                                 "brand" => $v['platform_brand'],
-                                "statistic_id" => $statistics_ids[0]
                             ]);
+                            if (is_null($platform->statistic_id))
+                            {
+                                $statistic = $this->createStatistic("platform");
+                                $platform->statistic_id = $statistic->id;
+                                $platform->save();
+                            }
 
 
                             $video = Video::firstOrCreate([
@@ -96,12 +94,17 @@ class ImportController extends Controller
                                 "description" => $v['description'],
                                 "release_date" => $v['release_date'],
                                 "image_url" => $v['cover'],
-                                "statistic_id" => $statistics_ids[1],
                                 "price" => $v['price'],
                                 "publisher_id" => $publisher->id,
                                 "video_id" => $video->id,
                                 "age_range_id" => $age_range->id
                             ]);
+                            if (is_null($game->statistic_id))
+                            {
+                                $statistic = $this->createStatistic("game");
+                                $game->statistic_id = $statistic->id;
+                                $game->save();
+                            }
 
 
                             for($x = 0; $x < count($genre_ids); $x++) {
@@ -114,25 +117,49 @@ class ImportController extends Controller
                             }
 
                             // Het product wordt toegevoegd aan de database
-                            Product::firstOrCreate([
-                                "statistic_id" => $statistics_ids[2],
+                            $product = Product::firstOrCreate([
                                 "game_id" => $game->id,
                                 "platform_id" => $platform->id,
                                 "user_id" => 6
                             ]);
+                            if (is_null($product->statistic_id))
+                            {
+                                $statistic = $this->createStatistic("product");
+                                $product->statistic_id = $statistic->id;
+                                $product->save();
+                            }
 
                         }
                     }
                 }
                 //notification aanmaken
+                $type = "success";
+                $message = "De producten zijn toegevoegd";
+                $source = "import";
+
+                event(new NotificationEvent($type, $message, $source));
 
                 // bericht succesvol wordt teruggegeven
                 return ['success' => 'De producten zijn toegevoegd'];
             }
         }
         //notification aanmaken
+        $type = "error";
+        $message = "De producten zijn niet toegevoegd";
+        $source = "import";
+
+        event(new NotificationEvent($type, $message, $source));
 
         // bericht error wordt teruggegeven
         return ['error' => 'Er ging iets mis'];
+    }
+
+
+    public function createStatistic($type) {
+        $statistic = statistic::create([
+            "type" => $type
+        ]);
+
+        return $statistic;
     }
 }

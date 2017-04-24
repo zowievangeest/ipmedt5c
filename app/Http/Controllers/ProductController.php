@@ -4,8 +4,10 @@ namespace ipmedt5c\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use ipmedt5c\Events\NotificationEvent;
 use ipmedt5c\Product;
 use Illuminate\Http\Request;
+use ipmedt5c\statistic;
 use ipmedt5c\View;
 
 class ProductController extends Controller
@@ -44,7 +46,8 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     *
+     * @param $tag_id
+     * @return
      */
     public function show($tag_id)
     {
@@ -53,7 +56,6 @@ class ProductController extends Controller
         $product = Product::where('tag_id', $tag_id)->first();
 
         $now = Carbon::now();
-
 
         // Nieuwe view aanmaken als deze nog niet bestaat
         $view = View::firstOrCreate([
@@ -85,10 +87,9 @@ class ProductController extends Controller
      * Show the form for editing the specified resource.
      *
      * Om een uid te koppelen en te ontkoppelen
-     *
-     * @param $id
-     * @param $tag_id
      * @return \Illuminate\Http\Response
+     * @internal param $id
+     * @internal param $tag_id
      * @internal param Product $product
      */
     public function edit()
@@ -113,7 +114,21 @@ class ProductController extends Controller
         }
 
         //Product wijziging opslaan
-        $product->save();
+        $saved = $product->save();
+
+        if (!$saved) {
+            $type = "error";
+            $message = "De tag is niet gekoppeld";
+            $source = "product";
+
+            event(new NotificationEvent($type, $message, $source));
+        } else {
+            $type = "success";
+            $message = "De tag is gekoppeld";
+            $source = "product";
+
+            event(new NotificationEvent($type, $message, $source));
+        }
     }
 
     /**
