@@ -20,6 +20,7 @@ import { HomeComponent } from './components/home/home.component';
 import {ProductsService} from "./services/products/products.service";
 import {VideoComponent} from "./components/video/video.component";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { FooterComponent } from './components/footer/footer.component';
 
 // Alle angular modules en component declaraties
 @NgModule({
@@ -29,7 +30,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     MenuComponent,
     HeaderComponent,
     HomeComponent,
-    VideoComponent
+    VideoComponent,
+    FooterComponent
   ],
   imports: [
     RoutingModule,

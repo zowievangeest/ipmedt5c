@@ -32,4 +32,31 @@ export class StatisticsService {
         });
   }
 
+  public getProductViews(): Observable<boolean | string> {
+    return this.http.get(`${url}statistics/products`, this.getOptions)
+        .map((res: Response) => res.json())
+        .map((res: any) => {
+          return res.products;
+        }).catch((error: any) => {
+          if (error.status == 401) {
+            return Observable.throw(error.status);
+          } else if (error.status == 500) {
+            return Observable.throw(error.status);
+          }
+        });
+  }
+
+  public getGameViews(): Observable<boolean | string> {
+    return this.http.get(`${url}statistics/games`, this.getOptions)
+        .map((res: Response) => res.json())
+        .map((res: any) => {
+          return res.games;
+        }).catch((error: any) => {
+          if (error.status == 401) {
+            return Observable.throw(error.status);
+          } else if (error.status == 500) {
+            return Observable.throw(error.status);
+          }
+        });
+  }
 }
