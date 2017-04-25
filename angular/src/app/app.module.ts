@@ -21,6 +21,7 @@ import {ProductsService} from "./services/products/products.service";
 import {VideoComponent} from "./components/video/video.component";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { FooterComponent } from './components/footer/footer.component';
+import {NgIdleKeepaliveModule} from "@ng-idle/keepalive";
 
 // Alle angular modules en component declaraties
 @NgModule({
@@ -42,7 +43,8 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpModule,
     ToastModule.forRoot(),
     BrowserAnimationsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    NgIdleKeepaliveModule.forRoot()
   ],
   providers: [
     LoginService,

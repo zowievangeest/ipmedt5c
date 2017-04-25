@@ -21,7 +21,7 @@
             </tr>
             </tbody>
         </table>
-        <template #content let-c="close" let-d="dismiss">
+        <ng-template #content let-c="close" let-d="dismiss">
             <div class="modal-header">
                 <h4 class="modal-title">Koppel product</h4>
                 <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
@@ -39,7 +39,7 @@
                 <button id="close-modal" type="button" class="btn btn-danger" (click)="c('Close click')">Sluiten</button>
                 <button type="button" *ngIf="uid" class="btn btn-success" (click)="koppel(product_id, uid)">Opslaan</button>
             </div>
-        </template>
+        </ng-template>
     </div>
     <hr class="mt-5">
     <div class="col-md-12">

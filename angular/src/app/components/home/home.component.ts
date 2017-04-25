@@ -1,9 +1,6 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {ProductsService} from "../../services/products/products.service";
 import {DomSanitizer} from "@angular/platform-browser";
-import {PusherService} from "../../services/pusher/pusher.service";
-import {ToastsManager} from "ng2-toastr";
-import {pusher} from "../../interfaces/pusher.interface";
 import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
@@ -18,6 +15,7 @@ export class HomeComponent implements OnInit {
   private uuid: string;
 
 
+
   // constructor
   constructor(private productService: ProductsService,
               private domSanitizer : DomSanitizer,
@@ -26,6 +24,7 @@ export class HomeComponent implements OnInit {
 
   // init functie
   ngOnInit() {
+
     // uid meegeven indien actieve route
     this.activatedRoute.params.subscribe((params: Params) => {
       this.uuid = params['uuid'];

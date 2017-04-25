@@ -1,4 +1,4 @@
-<div class="container-fluid p-0 m-0 bg-iot">
+<div class="container-fluid p-0 m-0 bg-iot" *ngIf="!timedOut">
     <div class="row">
         <div class="video-container">
             <div class="video-content mx-auto">
@@ -29,5 +29,49 @@
             </div>
         </div>
     </div>
-
+</div>
+<div class="container-fluid home-bg" *ngIf="timedOut">
+    <div class="row text-white idle-screen">
+        <div class="col-md-12 align-self-center">
+            <div class="row bg-primary">
+                <div class="col-md-8 offset-md-2 my-3">
+                    <div class="row">
+                        <div class="col-md-4 align-self-center">
+                            <h1 class="text-white text-center text-uppercase">Stap 1:</h1>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="text-center">Zoek een game met de <b>"SCAN MET NFC"</b> sticker.</p>
+                            <img src="../../../assets/img/stap_1.png" alt="Stap 1" width="250" height="200" class="img-responsive mx-auto d-block">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 offset-md-2 my-3">
+                    <div class="row">
+                        <div class="col-md-4 align-self-center">
+                            <h1 class="text-white text-center text-uppercase">Stap 2:</h1>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="text-center">Leg de game met de sticker op de scanner.</p>
+                            <img src="../../../assets/img/stap_2.png" width="250" height="200" alt="Stap 2" class="img-responsive mx-auto d-block">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row bg-primary">
+                <div class="col-md-8 offset-md-2 my-3">
+                    <div class="row">
+                        <div class="col-md-4 align-self-center">
+                            <h1 class="text-white text-center text-uppercase">Stap 3:</h1>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="text-center">Wacht tot de game gescand is & geniet van uw trailer!</p>
+                            <img src="../../../assets/img/stap_3.png" width="250" height="200" alt="Stap 3" class="img-responsive mx-auto d-block">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
