@@ -55,7 +55,19 @@ export class DashboardComponent implements AfterViewInit {
 
   public barChartOptions:any = {
     scaleShowVerticalLines: false,
-    responsive: true
+    responsive: true,
+  };
+
+  public lineChartOptions:any = {
+    scaleShowVerticalLines: false,
+    responsive: true,
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true,
+        }
+      }]
+    }
   };
 
   private chart_2_data(): void {

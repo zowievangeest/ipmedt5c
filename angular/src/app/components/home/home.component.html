@@ -1,32 +1,45 @@
-<div class="container-fluid p-0 m-0">
-    <div class="row">
-        <div class="video-container">
-            <div class="video-content mx-auto">
-                <iframe width="1280" height="720" *ngIf="products" [src]="videoUrl()" frameborder="0"
-                        allowfullscreen></iframe>
+<div class="container-fluid home-bg" *ngIf="!products">
+    <div class="row text-white idle-screen">
+        <div class="col-md-12 align-self-center">
+            <div class="row bg-primary">
+                <div class="col-md-8 offset-md-2 my-3">
+                    <div class="row">
+                        <div class="col-md-4 align-self-center">
+                            <h1 class="text-white text-center text-uppercase">Stap 1:</h1>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="text-center">Zoek een game met de <b>"SCAN MET NFC"</b> sticker.</p>
+                            <img src="../../../assets/img/stap_1.png" alt="Stap 1" width="250" height="200" class="img-responsive mx-auto d-block">
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-8 offset-lg-2 video-info text-white">
             <div class="row">
-                <div class="col-lg-8 pl-5 pt-4">
-                    <p class="product-brand" *ngIf="products">{{ products['platform']['name'] }} / {{ products['platform']['brand'] }}</p>
-                    <p class="product-title" *ngIf="products">{{ products['game']['name']}}</p>
-                    <p class="product-pub-rel" *ngIf="products">Gepubliseerd door: {{ products['game']['publisher']['publisher'] }}</p>
-                    <p class="product-pub-rel" *ngIf="products">Release date: {{ products['game']['release_date']}}</p>
+                <div class="col-md-8 offset-md-2 my-3">
+                    <div class="row">
+                        <div class="col-md-4 align-self-center">
+                            <h1 class="text-white text-center text-uppercase">Stap 2:</h1>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="text-center">Leg de game met de sticker op de scanner.</p>
+                            <img src="../../../assets/img/stap_2.png" width="250" height="200" alt="Stap 2" class="img-responsive mx-auto d-block">
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-2 my-auto">
-                    <img src="../../../assets/img/gamepad.svg" alt="" class="product-icon mx-auto d-block">
-                    <p class="product-icon-text text-center pt-3" *ngIf="products">{{ products['game']['genres'][0]['name']}}</p>
-                </div>
-                <div class="col-lg-2 my-auto">
-                    <img src="../../../assets/img/shopping-cart.svg" alt="" class="product-icon mx-auto d-block">
-                    <p class="product-icon-text text-center pt-3" *ngIf="products">&euro; {{ products['game']['price']}}</p>
+            </div>
+            <div class="row bg-primary">
+                <div class="col-md-8 offset-md-2 my-3">
+                    <div class="row">
+                        <div class="col-md-4 align-self-center">
+                            <h1 class="text-white text-center text-uppercase">Stap 3:</h1>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="text-center">Wacht tot de game gescand is & geniet van uw trailer!</p>
+                            <img src="../../../assets/img/stap_3.png" width="250" height="200" alt="Stap 3" class="img-responsive mx-auto d-block">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>

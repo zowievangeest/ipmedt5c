@@ -1,4 +1,4 @@
-<div class="container-fluid p-0 m-0">
+<div class="container-fluid p-0 m-0 bg-iot">
     <div class="row">
         <div class="video-container">
             <div class="video-content mx-auto">
@@ -14,6 +14,7 @@
                 <div class="col-lg-8 pl-5 pt-4">
                     <p class="product-brand" *ngIf="products">{{ products['platform']['name'] }} / {{ products['platform']['brand'] }}</p>
                     <p class="product-title" *ngIf="products">{{ products['game']['name']}}</p>
+                    <p *ngIf="products"><b>Beschrijving:</b><br> {{ products['game']['short_description'] }}</p>
                     <p class="product-pub-rel" *ngIf="products">Gepubliseerd door: {{ products['game']['publisher']['publisher'] }}</p>
                     <p class="product-pub-rel" *ngIf="products">Release date: {{ products['game']['release_date']}}</p>
                 </div>

@@ -27,6 +27,7 @@ export class VideoComponent implements OnInit {
     // parameters opvangen van uid
     this.activatedRoute.params.subscribe((params: Params) => {
       this.uuid = params['uuid'];
+      this.scanGamePusher();
     });
 
     // functie scangamepusher uitvoerne on init

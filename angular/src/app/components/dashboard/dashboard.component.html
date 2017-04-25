@@ -62,7 +62,7 @@
                 </div>
                 <div class="dashboard-content">
                     <p class="text-center p-2">Hieronder vind je het totaal aantal gescande games per dag.</p>
-                    <canvas *ngIf="chart3_lineChartData" baseChart width="400" height="400" [datasets]="chart3_lineChartData" [labels]="chart3_lineChartLabels" [chartType]="chart3_chartType"></canvas>
+                    <canvas *ngIf="chart3_lineChartData" baseChart width="400" height="400" [datasets]="chart3_lineChartData" [labels]="chart3_lineChartLabels" [chartType]="chart3_chartType" [options]="lineChartOptions"></canvas>
                     <div class="dashboard-bottombox mt-5">
                         <div class="row">
                             <div class="col-md-9 pr-0">
