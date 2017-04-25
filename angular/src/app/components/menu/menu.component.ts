@@ -3,6 +3,7 @@ import {LoginService} from "../../services/login/login.service";
 import {Router} from "@angular/router";
 import {LoginGuard} from "../../guards/login.guard";
 import { user } from "../../interfaces/user.interface"
+declare const swal: any;
 
 @Component({
   selector: 'app-menu',
@@ -34,9 +35,22 @@ export class MenuComponent implements OnInit {
 
   // loguit functie
   public logout(): void {
-    this.loginService.logout();
-    this.loggedIn = false;
-    this.openMenu(true);
+
+    swal({
+      title: "Uitloggen?",
+      text: "Weet u zeker dat u wilt uitloggen?",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Loguit",
+      closeOnConfirm: false
+    },
+    () => {
+      swal("Uitgelogd!", "U bent uitgelogd.", "success");
+      this.loginService.logout();
+      this.loggedIn = false;
+      this.openMenu(true);
+    });
   }
 
   public openMenu(force: boolean = false): void {
