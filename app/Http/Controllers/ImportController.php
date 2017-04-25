@@ -11,7 +11,7 @@ use ipmedt5c\Genre;
 use ipmedt5c\Platform;
 use ipmedt5c\Product;
 use ipmedt5c\Publisher;
-use ipmedt5c\statistic;
+use ipmedt5c\Statistic;
 use ipmedt5c\Video;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -156,7 +156,7 @@ class ImportController extends Controller
 
 
     public function createStatistic($type) {
-        $statistic = statistic::create([
+        $statistic = Statistic::create([
             "type" => $type
         ]);
 

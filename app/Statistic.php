@@ -4,7 +4,7 @@ namespace ipmedt5c;
 
 use Illuminate\Database\Eloquent\Model;
 
-class statistic extends Model
+class Statistic extends Model
 {
     public $fillable = ['type'];
     protected $with = ['views'];

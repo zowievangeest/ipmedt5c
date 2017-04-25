@@ -118,13 +118,13 @@ class ProductController extends Controller
 
         if (!$saved) {
             $type = "error";
-            $message = "De tag is niet gekoppeld";
+            $message = "Product is niet gekoppeld";
             $source = "product";
 
             event(new NotificationEvent($type, $message, $source));
         } else {
             $type = "success";
-            $message = "De tag is gekoppeld";
+            $message = "Product is gekoppeld";
             $source = "product";
 
             event(new NotificationEvent($type, $message, $source));
