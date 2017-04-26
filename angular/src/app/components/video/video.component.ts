@@ -73,8 +73,8 @@ export class VideoComponent implements OnInit {
 
   public videoUrl() {
     // secrutiy bypassen voor youtube url - whitelisted url
-    const videourl = this.products['game']['video']['url'];
-    videourl.replace(/watch?v=/g, "embed/");
+    let videourl = this.products['game']['video']['url'];
+    videourl = videourl.replace('watch?v=', 'embed/');
 
     console.log(videourl);
 
