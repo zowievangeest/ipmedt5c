@@ -76,8 +76,6 @@ export class VideoComponent implements OnInit {
     let videourl = this.products['game']['video']['url'];
     videourl = videourl.replace('watch?v=', 'embed/');
 
-    console.log(videourl);
-
     return this.domSanitizer.bypassSecurityTrustResourceUrl(videourl + '?rel=0&amp;controls=0&amp;showinfo=0&autoplay=1');
   }
 
