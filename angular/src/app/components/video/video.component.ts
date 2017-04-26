@@ -73,7 +73,10 @@ export class VideoComponent implements OnInit {
 
   public videoUrl() {
     // secrutiy bypassen voor youtube url - whitelisted url
-    return this.domSanitizer.bypassSecurityTrustResourceUrl(`${this.products['game']['video']['url']}?autoplay=1`);
+    const videourl = this.products['game']['video']['url'];
+    videourl.replace('watch?v=', 'embed/');
+
+    return this.domSanitizer.bypassSecurityTrustResourceUrl(videourl + '?rel=0&amp;controls=0&amp;showinfo=0&autoplay=1');
   }
 
   public reset() {
