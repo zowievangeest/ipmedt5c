@@ -81,6 +81,8 @@ export class ProductsComponent implements OnInit {
             this.productService.getProducts().subscribe(
                 (res: any) => {
                   this.products = res;
+                  this.product_id = 0;
+                  this.uid = "";
                   document.getElementById("close-modal").click();
                 }
             )
