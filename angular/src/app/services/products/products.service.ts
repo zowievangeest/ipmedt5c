@@ -75,7 +75,7 @@ export class ProductsService {
   }
 
   public uploadFile(data: FormData): Observable<boolean | string> {
-    return this.http.post(`${url}product/import/`, data, this.getOptions)
+    return this.http.post(`${url}product/import`, data, this.getOptions)
         .map((res: Response) => res.json())
         .map((res: any) => {
           return res;
