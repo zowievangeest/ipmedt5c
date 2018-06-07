@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-12">
+            <h1 class="text-center">Dashboard</h1>
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col-md-4">
+            <div class="dashboard-bg">
+                <div class="dashboard-titlebox py-3">
+                    <h3 class="text-white text-center">{{ chart1_title }}</h3>
+                </div>
+                <div class="dashboard-content">
+                    <p class="text-center p-2">Hieronder vind je het totaal aantal gescande games per platform.</p>
+                    <canvas *ngIf="chart1_pieChartData" baseChart [data]="chart1_pieChartData" [labels]="chart1_pieChartLabels" [chartType]="chart1_chartType"></canvas>
+                    <div class="dashboard-bottombox mt-5">
+                        <div class="row">
+                            <div class="col-md-9 pr-0">
+                                <div class="dashboard-titlebox mb-0">
+                                    <h3 class="text-uppercase text-white py-3 mb-0 pl-3">Totaal:</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-3 pl-0">
+                                <div class="dashboard-countbox pl-0">
+                                    <h3 class="text-center text-white count-txt" *ngIf="chart1_total" counto [step]="100" [countTo]="chart1_total" [countFrom]="0" [duration]="2" (countoChange)="counto3 = $event">{{ counto3 | number: '1.0-0'}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="dashboard-bg">
+                <div class="dashboard-titlebox py-3">
+                    <h3 class="text-white text-center">{{ chart2_title }}</h3>
+                </div>
+                <div class="dashboard-content">
+                    <p class="text-center p-2">Hieronder vind je het totaal gescande games.</p>
+                    <canvas *ngIf="chart2_barChartData" baseChart width="400" height="400" [datasets]="chart2_barChartData" [labels]="chart2_barChartLabels" [chartType]="chart2_chartType" [options]="barChartOptions"></canvas>
+                    <div class="dashboard-bottombox mt-5">
+                        <div class="row">
+                            <div class="col-md-9 pr-0">
+                                <div class="dashboard-titlebox mb-0">
+                                    <h3 class="text-uppercase text-white py-3 mb-0 pl-3">Totaal:</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-3 pl-0">
+                                <div class="dashboard-countbox pl-0">
+                                    <h3 class="text-center text-white count-txt" *ngIf="chart1_total" counto [step]="100" [countTo]="chart1_total" [countFrom]="0" [duration]="2" (countoChange)="counto3 = $event">{{ counto3 | number: '1.0-0'}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="dashboard-bg">
+                <div class="dashboard-titlebox py-3">
+                    <h3 class="text-white text-center">{{ chart3_title }}</h3>
+                </div>
+                <div class="dashboard-content">
+                    <p class="text-center p-2">Hieronder vind je het totaal aantal gescande games per dag.</p>
+                    <canvas *ngIf="chart3_lineChartData" baseChart width="400" height="400" [datasets]="chart3_lineChartData" [labels]="chart3_lineChartLabels" [chartType]="chart3_chartType" [options]="lineChartOptions"></canvas>
+                    <div class="dashboard-bottombox mt-5">
+                        <div class="row">
+                            <div class="col-md-9 pr-0">
+                                <div class="dashboard-titlebox mb-0">
+                                    <h3 class="text-uppercase text-white py-3 mb-0 pl-3">Totaal:</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-3 pl-0">
+                                <div class="dashboard-countbox pl-0">
+                                    <h3 class="text-center text-white count-txt" *ngIf="chart1_total" counto [step]="100" [countTo]="chart1_total" [countFrom]="0" [duration]="2" (countoChange)="counto3 = $event">{{ counto3 | number: '1.0-0'}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
